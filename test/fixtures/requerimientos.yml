@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  numero: 1
+  descripcion: MyString
+  tipo: 
+  aplicacion: 
+  usuario_solicitante: 
+  area_responsable: 
+  fecha_fin_estimada: 2012-01-18
+  lider_desarrollo: 
+  dias_estimados: 1
+
+two:
+  numero: 1
+  descripcion: MyString
+  tipo: 
+  aplicacion: 
+  usuario_solicitante: 
+  area_responsable: 
+  fecha_fin_estimada: 2012-01-18
+  lider_desarrollo: 
+  dias_estimados: 1

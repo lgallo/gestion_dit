@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  planificacion: 
+  requerimiento: 
+  dedicacion_mes: 1
+
+two:
+  planificacion: 
+  requerimiento: 
+  dedicacion_mes: 1

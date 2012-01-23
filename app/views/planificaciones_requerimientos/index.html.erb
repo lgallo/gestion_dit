@@ -1,0 +1,27 @@
+<h1>Listing planificaciones_requerimientos</h1>
+
+<table>
+  <tr>
+    <th>Planificacion</th>
+    <th>Requerimiento</th>
+    <th>Dedicacion mes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @planificaciones_requerimientos.each do |planificacion_requerimiento| %>
+  <tr>
+    <td><%= planificacion_requerimiento.planificacion %></td>
+    <td><%= planificacion_requerimiento.requerimiento %></td>
+    <td><%= planificacion_requerimiento.dedicacion_mes %></td>
+    <td><%= link_to 'Show', planificacion_requerimiento %></td>
+    <td><%= link_to 'Edit', edit_planificacion_requerimiento_path(planificacion_requerimiento) %></td>
+    <td><%= link_to 'Destroy', planificacion_requerimiento, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Planificacion requerimiento', new_planificacion_requerimiento_path %>

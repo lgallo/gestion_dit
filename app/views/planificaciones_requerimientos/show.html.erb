@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Planificacion:</b>
+  <%= @planificacion_requerimiento.planificacion.descripcion %>
+</p>
+
+<p>
+  <b>Requerimiento:</b>
+  <%= @planificacion_requerimiento.requerimiento.descripcion %>
+</p>
+
+<p>
+  <b>Dedicacion mes:</b>
+  <%= @planificacion_requerimiento.dedicacion_mes %>
+</p>
+
+
+<%= link_to 'Edit', edit_planificacion_requerimiento_path(@planificacion_requerimiento) %> |
+<%= link_to 'Back', planificacion_path(@planificacion_requerimiento.planificacion) %>

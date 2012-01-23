@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="left">
+	<h2><%= @planificacion.descripcion %></h2>
+	
+	<div class="left">
+		<p>
+		  <b>Cantidad personas:</b>
+		  <%= @planificacion.cantidad_personas %>
+		</p>
+		<p>
+		  <b>Dias mes:</b>
+		  <%= @planificacion.dias_mes %>
+		</p>
+		<p>
+		  <b>Coeficiente ajuste:</b>
+		  <%= @planificacion.coeficiente_ajuste %>
+		</p>
+		<p>
+		  <b>Dias totales:</b>
+		  <%= @planificacion.dias_totales %>
+		</p>
+		
+		<%= link_to 'Edit', edit_planificacion_path(@planificacion) %> |
+		<%= link_to 'Back', planificaciones_path %>
+	</div>
+	<div class="right">
+		<%= render 'planificaciones/requerimientos_mes' %>
+	</div>
+</div>
+
+
+
+

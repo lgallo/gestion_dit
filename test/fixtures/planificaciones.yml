@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  mes: 1
+  anio: 1
+  cantidad_personas: 1
+  dias_mes: 1
+  coeficiente_ajuste: 9.99
+  dias_totales: 1
+  area: 
+
+two:
+  mes: 1
+  anio: 1
+  cantidad_personas: 1
+  dias_mes: 1
+  coeficiente_ajuste: 9.99
+  dias_totales: 1
+  area: 

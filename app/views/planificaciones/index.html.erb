@@ -1,0 +1,44 @@
+<h1>Listing planificaciones</h1>
+
+<table>
+  <tr>
+    <th rowspan="2">Mes</th>
+    <th rowspan="2">A&ntilde;io</th>
+    <th rowspan="2">Cantidad personas</th>
+    <th rowspan="2">D&iacute;as mes</th>
+    <th rowspan="2">Coeficiente ajuste</th>
+    <th colspan="3">D&iacute;as</th>
+    <th rowspan="2">&Aacute;rea</th>
+    <th rowspan="2"></th>
+    <th rowspan="2"></th>
+    <th rowspan="2"></th>
+  </tr>
+  <tr>
+    <th>Totales</th>
+    <th>Asignados</th>
+    <th>Restantes</th>
+  </tr>
+
+<% @planificaciones.each do |planificacion|
+	asignados = planificacion.dias_asignados
+	restantes = planificacion.dias_totales - asignados %>
+  <tr>
+    <td><%= MESES[planificacion.mes - 1][0] %></td>
+    <td><%= planificacion.anio %></td>
+    <td><%= planificacion.cantidad_personas %></td>
+    <td><%= planificacion.dias_mes %></td>
+    <td><%= planificacion.coeficiente_ajuste %></td>
+    <td><%= planificacion.dias_totales %></td>
+    <td><%= asignados %></td>
+    <td><%= restantes %></td>
+    <td><%= planificacion.area.nombre %></td>
+    <td><%= link_to 'Show', planificacion %></td>
+    <td><%= link_to 'Edit', edit_planificacion_path(planificacion) %></td>
+    <td><%= link_to 'Destroy', planificacion, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Planificacion', new_planificacion_path %>

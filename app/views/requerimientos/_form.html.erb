@@ -1,0 +1,53 @@
+<%= form_for(@requerimiento) do |f| %>
+  <% if @requerimiento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@requerimiento.errors.count, "error") %> prohibited this requerimiento from being saved:</h2>
+
+      <ul>
+      <% @requerimiento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :numero %><br />
+    <%= f.number_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_requerimiento %><br />
+    <%= f.select :tipo_requerimiento_id, @tipos_requerimientos %>
+  </div>
+  <div class="field">
+    <%= f.label :aplicacion %><br />
+    <%= f.select :aplicacion_id, @aplicaciones %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario_solicitante %><br />
+    <%= f.select :usuario_solicitante, @usuarios %>
+  </div>
+  <div class="field">
+    <%= f.label :area %><br />
+    <%= f.select :area_id, @areas %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_fin_estimada %><br />
+    <%= f.date_select :fecha_fin_estimada %>
+  </div>
+  <div class="field">
+    <%= f.label :lider_desarrollo %><br />
+    <%= f.select :lider_desarrollo, @usuarios %>
+  </div>
+  <div class="field">
+    <%= f.label :dias_estimados %><br />
+    <%= f.number_field :dias_estimados %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+
+<div id="header">
+	<div id="logo">
+		<div id="logo_text">
+			<!-- class="logo_colour", allows you to change the colour of the text -->
+			<h1>
+				<%= link_to root_path do %>
+					Gesti&oacute;n de la <span class="logo_colour">DIT</span>
+				<% end %>
+			</h1>
+			<h2>Planificaci&oacute;n unificada de las gerencias</h2>
+		</div>
+	</div>
+	
+	<div id="menubar">
+		<ul id="menu">
+			<%= li_menu 'planificaciones', 'Planificaciones' %>
+			<%= li_menu 'requerimientos', 'Requerimientos' %>
+			<%= li_menu 'aplicaciones', 'Aplicaciones' %>
+			<%= li_menu 'usuarios', 'Usuarios' %>
+			<%= li_menu 'areas', 'Áreas' %>
+			<%= li_menu 'tipos_requerimientos', 'Tipos de req.' %>
+		</ul>
+	</div>
+</div>
+
+<div id="content_header"></div>

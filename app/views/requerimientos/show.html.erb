@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero:</b>
+  <%= @requerimiento.numero %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @requerimiento.descripcion %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @requerimiento.tipo %>
+</p>
+
+<p>
+  <b>Aplicacion:</b>
+  <%= @requerimiento.aplicacion %>
+</p>
+
+<p>
+  <b>Usuario solicitante:</b>
+  <%= @requerimiento.usuario_solicitante %>
+</p>
+
+<p>
+  <b>Area responsable:</b>
+  <%= @requerimiento.area_responsable %>
+</p>
+
+<p>
+  <b>Fecha fin estimada:</b>
+  <%= @requerimiento.fecha_fin_estimada %>
+</p>
+
+<p>
+  <b>Lider desarrollo:</b>
+  <%= @requerimiento.lider_desarrollo %>
+</p>
+
+<p>
+  <b>Dias estimados:</b>
+  <%= @requerimiento.dias_estimados %>
+</p>
+
+
+<%= link_to 'Edit', edit_requerimiento_path(@requerimiento) %> |
+<%= link_to 'Back', requerimientos_path %>

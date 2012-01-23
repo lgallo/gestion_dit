@@ -1,0 +1,37 @@
+
+<table cellpadding="1" cellspacing="1" width="730">
+	<%= link_to 'Agregar requerimiento', "#{new_planificacion_requerimiento_path}/#{@planificacion.id}" %>
+	<tr>
+		<th rowspan="2">Nro. RQ.</th>
+		<th rowspan="2">Descripci&oacute;n</th>
+		<th rowspan="2">Tipo</th>
+		<th rowspan="2">Aplicaci&oacute;n</th>
+		<th rowspan="2">Área resp.</th>
+		<th rowspan="2">Días estimados</th>
+		<th colspan="3">Dedicación</th>
+		<th rowspan="2">Fin estimado</th>
+		<th rowspan="2">&nbsp;</th>
+	</tr>
+	<tr>
+		<th>Previa</th>
+		<th>Mes</th>
+		<th>Restante</th>
+	</tr>
+	<% @planificacion.planificaciones_requerimientos.each do |p| %>
+		<tr>
+			<td><%= p.requerimiento.numero %></td>
+			<td><%= p.requerimiento.descripcion %></td>
+			<td><%= p.requerimiento.tipo_requerimiento.nombre %></td>
+			<td><%= p.requerimiento.aplicacion.nombre %></td>
+			<td><%= p.requerimiento.area.nombre %></td>
+			<td><%= p.requerimiento.dias_estimados %></td>
+			<td><%= p.dedicacion_previa %></td>
+			<td><%= p.dedicacion_mes %></td>
+			<td><%= p.dedicacion_restante %></td>
+			<td><%= p.requerimiento.fecha_fin_estimada %></td>
+			<td>
+				<%= link_to 'Editar', edit_planificacion_requerimiento_path(p) %>
+			</td>
+		</tr>
+	<% end %>
+</table>

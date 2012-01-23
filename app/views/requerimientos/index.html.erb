@@ -1,0 +1,39 @@
+<h1>Listing requerimientos</h1>
+
+<table>
+  <tr>
+    <th>Numero</th>
+    <th>Descripcion</th>
+    <th>Tipo</th>
+    <th>Aplicacion</th>
+    <th>Usuario solicitante</th>
+    <th>Area responsable</th>
+    <th>Fecha fin estimada</th>
+    <th>Lider desarrollo</th>
+    <th>Dias estimados</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @requerimientos.each do |requerimiento| %>
+  <tr>
+    <td><%= requerimiento.numero %></td>
+    <td><%= requerimiento.descripcion %></td>
+    <td><%= requerimiento.tipo_requerimiento.nombre %></td>
+    <td><%= requerimiento.aplicacion.nombre %></td>
+    <td><%= requerimiento.usuario_solicitante %></td>
+    <td><%= requerimiento.area.nombre %></td>
+    <td><%= requerimiento.fecha_fin_estimada %></td>
+    <td><%= requerimiento.lider_desarrollo %></td>
+    <td><%= requerimiento.dias_estimados %></td>
+    <td><%= link_to 'Show', requerimiento %></td>
+    <td><%= link_to 'Edit', edit_requerimiento_path(requerimiento) %></td>
+    <td><%= link_to 'Destroy', requerimiento, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Requerimiento', new_requerimiento_path %>
