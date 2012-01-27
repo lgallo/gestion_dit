@@ -1,34 +1,43 @@
 <p id="notice"><%= notice %></p>
 
-<div class="left">
-	<h2><%= @planificacion.descripcion %></h2>
-	
-	<div class="left">
-		<p>
-		  <b>Cantidad personas:</b>
-		  <%= @planificacion.cantidad_personas %>
-		</p>
-		<p>
-		  <b>Dias mes:</b>
-		  <%= @planificacion.dias_mes %>
-		</p>
-		<p>
-		  <b>Coeficiente ajuste:</b>
-		  <%= @planificacion.coeficiente_ajuste %>
-		</p>
-		<p>
-		  <b>Dias totales:</b>
-		  <%= @planificacion.dias_totales %>
-		</p>
-		
-		<%= link_to 'Edit', edit_planificacion_path(@planificacion) %> |
-		<%= link_to 'Back', planificaciones_path %>
+<div>
+	<div class="left" style="width: 100%">
+		<div class="left">
+			<h2><%= @planificacion.descripcion %></h2>
+		</div>
+		<div class="right">
+			<%= link_to 'Volver', planificaciones_path %>
+		</div>		
 	</div>
-	<div class="right">
+	
+	<div>
+		<div class="left" style="width: 250px;">
+			<p>
+			  <b>Cantidad personas:</b>
+			  <%= best_in_place @planificacion, :cantidad_personas, :html_attrs => { :size => '1', :class => 'editable' } %>
+			</p>
+			<p>
+			  <b>Dias mes:</b>
+			  <%= best_in_place @planificacion, :dias_mes, :html_attrs => { :size => '1' } %>
+			</p>
+		</div>
+		<div class="left">
+			<p>
+			  <b>Coeficiente ajuste:</b>
+			  <%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %>
+			</p>
+			<p>
+			  <b>Dias totales:</b>
+			  <%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %>
+			</p>
+		</div>
+	</div>
+	<div class="left" style="width: 100%">
 		<%= render 'planificaciones/requerimientos_mes' %>
 	</div>
+	
+	<div class="right">
+		<%= link_to 'Volver', planificaciones_path %>
+	</div>		
+	
 </div>
-
-
-
-

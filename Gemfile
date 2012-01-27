@@ -19,6 +19,7 @@ end
 
 gem 'jquery-rails'
 gem 'foreman'
+gem 'best_in_place'
 
 # Use unicorn as the web server
 # gem 'unicorn'
