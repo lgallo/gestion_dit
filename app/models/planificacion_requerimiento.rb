@@ -12,6 +12,6 @@ class PlanificacionRequerimiento < ActiveRecord::Base
   end
   
   def dedicacion_restante
-    self.requerimiento.dias_estimados - self.dedicacion_mes - self.dedicacion_previa
+    self.requerimiento.dias_estimados - self.dedicacion_previa
   end
 end

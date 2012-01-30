@@ -17,18 +17,18 @@
 			  <%= best_in_place @planificacion, :cantidad_personas, :html_attrs => { :size => '1', :class => 'editable' } %>
 			</p>
 			<p>
-			  <b>Dias mes:</b>
+			  <b>D&iacute;as en el mes:</b>
 			  <%= best_in_place @planificacion, :dias_mes, :html_attrs => { :size => '1' } %>
 			</p>
 		</div>
 		<div class="left">
 			<p>
-			  <b>Coeficiente ajuste:</b>
-			  <%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %>
+			  <b>D&iacute;as disponibles (por recursos y dedicaci&oacute;n):</b>
+			  <%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %>
 			</p>
 			<p>
-			  <b>Dias totales:</b>
-			  <%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %>
+			  <b>Coeficiente ajuste:</b>
+			  <%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %>
 			</p>
 		</div>
 	</div>
