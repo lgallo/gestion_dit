@@ -1,4 +1,5 @@
 class RequerimientosController < ApplicationController
+  before_filter :cargar_combos, :only => [:new, :edit]
   # GET /requerimientos
   # GET /requerimientos.json
   def index
@@ -25,10 +26,6 @@ class RequerimientosController < ApplicationController
   # GET /requerimientos/new.json
   def new
     @requerimiento = Requerimiento.new
-    @tipos_requerimientos = TipoRequerimiento.all.map { |tipo| [tipo.nombre, tipo.id] }
-    @aplicaciones = Aplicacion.all.map { |aplicacion| [aplicacion.nombre, aplicacion.id] }
-    @usuarios = Usuario.all.map { |usuario| [usuario.login, usuario.id] }
-    @areas = Area.all.map { |area| [area.nombre, area.id] }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -83,5 +80,13 @@ class RequerimientosController < ApplicationController
       format.html { redirect_to requerimientos_url }
       format.json { head :ok }
     end
+  end
+  
+private 
+  def cargar_combos
+    @tipos_requerimientos = TipoRequerimiento.all.map { |tipo| [tipo.nombre, tipo.id] }
+    @aplicaciones = Aplicacion.all.map { |aplicacion| [aplicacion.nombre, aplicacion.id] }
+    @usuarios = Usuario.all.map { |usuario| [usuario.login, usuario.id] }
+    @areas = Area.all.map { |area| [area.nombre, area.id] }
   end
 end
