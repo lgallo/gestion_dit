@@ -1,6 +1,11 @@
 GestionDit::Application.routes.draw do
   match "/planificaciones_requerimientos/new/:id" => "planificaciones_requerimientos#new"
 
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy'
+  
   resources :planificaciones_requerimientos
 
   resources :planificaciones

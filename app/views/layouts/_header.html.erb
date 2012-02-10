@@ -13,14 +13,17 @@
 	</div>
 	
 	<div id="menubar">
-		<ul id="menu">
-			<%= li_menu 'planificaciones', 'Planificaciones' %>
-			<%= li_menu 'requerimientos', 'Requerimientos' %>
-			<%= li_menu 'aplicaciones', 'Aplicaciones' %>
-			<%= li_menu 'usuarios', 'Usuarios' %>
-			<%= li_menu 'areas', 'Áreas' %>
-			<%= li_menu 'tipos_requerimientos', 'Tipos de req.' %>
-		</ul>
+		<%= logueado? %>
+		<% if logueado? %>
+			<ul id="menu">
+				<%= li_menu 'planificaciones', 'Planificaciones' %>
+				<%= li_menu 'requerimientos', 'Requerimientos' %>
+				<%= li_menu 'aplicaciones', 'Aplicaciones' %>
+				<%= li_menu 'usuarios', 'Usuarios' %>
+				<%= li_menu 'areas', 'Áreas' %>
+				<%= li_menu 'tipos_requerimientos', 'Tipos de req.' %>
+			</ul>
+		<% end %>
 	</div>
 </div>
 
