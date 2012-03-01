@@ -14,7 +14,7 @@
     
     @planificaciones.sort_by!{ |p| [p.anio, p.mes]}.reverse!
     
-    @areas = [Area.new( :id => -1, :nombre => "todas las áreas")].concat(Area.all)
+    @areas = [Area.new( :id => -1, :nombre => "todas las áreas")].concat(Area.where(" nombre like '%DIT%' "))
 
     respond_to do |format|
       format.html # index.html.erb
