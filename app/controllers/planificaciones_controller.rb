@@ -1,10 +1,20 @@
-class PlanificacionesController < ApplicationController
+﻿class PlanificacionesController < ApplicationController
   before_filter :cargar_areas, :only => [:new, :edit]
   
   # GET /planificaciones
   # GET /planificaciones.json
   def index
-    @planificaciones = Planificacion.all
+    @id_area = params[:id_area]
+    
+    if @id_area.nil? or @id_area.empty?
+      @planificaciones = Planificacion.all
+    else
+      @planificaciones = Planificacion.where(:area_id => @id_area)
+    end
+    
+    @planificaciones.sort_by!{ |p| [p.anio, p.mes]}.reverse!
+    
+    @areas = [Area.new( :id => -1, :nombre => "todas las áreas")].concat(Area.all)
 
     respond_to do |format|
       format.html # index.html.erb

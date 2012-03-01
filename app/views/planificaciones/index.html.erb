@@ -1,4 +1,15 @@
-<h1>Listado de planificaciones</h1>
+<form id="filtro"> 
+	<h1>
+		Listado de planificaciones de 
+		<select name="id_area" onchange="javascript: document.getElementById('filtro').submit();">
+			<% @areas.each do |a| %>
+				<option value="<%= a.id %>" <%= "selected" if a.id.to_i == @id_area.to_i %>>
+					<%= a.nombre %>
+				</option>
+			<% end %>
+		</select>
+	</h1>
+</form>
 
 <table>
   <tr>
