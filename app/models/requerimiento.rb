@@ -22,4 +22,12 @@ class Requerimiento < ActiveRecord::Base
   belongs_to :usuario, :foreign_key => "usuario_solicitante"
   belongs_to :area
   belongs_to :usuario, :foreign_key => "lider_desarrollo"
+  
+  def solicitante
+    Usuario.find(usuario_solicitante) unless usuario_solicitante.nil?
+  end
+  
+  def lider
+    Usuario.find(lider_desarrollo) unless lider_desarrollo.nil?
+  end
 end

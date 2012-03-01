@@ -21,9 +21,10 @@
     <td><%= requerimiento.tipo_requerimiento.nombre %></td>
     <td><%= requerimiento.aplicacion.nombre %></td>
     <td>
-    	<% unless requerimiento.usuario_solicitante.nil? %>
-    		<%= requerimiento.usuario_solicitante.apellido %>,&nbsp;
-    		<%= requerimiento.usuario_solicitante.nombre %>
+    	<% solicitante = requerimiento.solicitante %> 
+		<% unless solicitante.nil? %>
+    		<%= solicitante.apellido %>,&nbsp;
+    		<%= solicitante.nombre %>
     	<% else %>
     		-
     	<% end %>
@@ -31,9 +32,10 @@
     <td><%= requerimiento.area.nombre %></td>
     <td><%= requerimiento.fecha_fin_estimada %></td>
     <td>
-    	<% unless requerimiento.lider_desarrollo.nil? %>
-    		<%= requerimiento.lider_desarrollo.apellido %>,&nbsp;
-    		<%= requerimiento.lider_desarrollo.nombre %>
+    	<% lider = requerimiento.lider %>
+    	<% unless lider.nil? %>
+    		<%= lider.apellido %>,&nbsp;
+    		<%= lider.nombre %>
     	<% else %>
     		-
     	<% end %>
