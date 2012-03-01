@@ -74,10 +74,11 @@ class PlanificacionesRequerimientosController < ApplicationController
   # DELETE /planificaciones_requerimientos/1.json
   def destroy
     @planificacion_requerimiento = PlanificacionRequerimiento.find(params[:id])
+    planificacion = @planificacion_requerimiento.planificacion 
     @planificacion_requerimiento.destroy
 
     respond_to do |format|
-      format.html { redirect_to planificaciones_requerimientos_url }
+      format.html { redirect_to planificacion_path(planificacion) }
       format.json { head :ok }
     end
   end

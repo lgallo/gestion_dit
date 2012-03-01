@@ -10,6 +10,7 @@
 		<th rowspan="2">D&iacute;as estimados</th>
 		<th colspan="3">Dedicaci&oacute;n</th>
 		<th rowspan="2">Fin estimado</th>
+		<th rowspan="2">&nbsp;</th>
 	</tr>
 	<tr>
 		<th>Previa</th>
@@ -28,6 +29,7 @@
 			<td><%= p.dedicacion_restante %></td>
 			<td><%= best_in_place p, :dedicacion_mes, :html_attrs => { :size => '1' } %></td>
 			<td nowrap><%= p.requerimiento.fecha_fin_estimada %></td>
+		    <td><%= link_to 'Borrar', p, confirm: '¿Está seguro?', method: :delete %></td>
 		</tr>
 	<% end %>
 </table>
