@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305180321) do
+ActiveRecord::Schema.define(:version => 20120305182130) do
 
   create_table "aplicaciones", :force => true do |t|
     t.string   "nombre"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(:version => 20120305180321) do
   end
 
   create_table "areas", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "estados", :force => true do |t|
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -69,10 +75,12 @@ ActiveRecord::Schema.define(:version => 20120305180321) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "observaciones"
+    t.integer  "estado_id"
   end
 
   add_index "requerimientos", ["aplicacion_id"], :name => "index_requerimientos_on_aplicacion_id"
   add_index "requerimientos", ["area_id"], :name => "index_requerimientos_on_area_id"
+  add_index "requerimientos", ["estado_id"], :name => "index_requerimientos_on_estado_id"
   add_index "requerimientos", ["lider_desarrollo"], :name => "index_requerimientos_on_lider_desarrollo"
   add_index "requerimientos", ["tipo_requerimiento_id"], :name => "index_requerimientos_on_tipo_requerimiento_id"
   add_index "requerimientos", ["usuario_solicitante"], :name => "index_requerimientos_on_usuario_solicitante"

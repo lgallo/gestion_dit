@@ -90,5 +90,6 @@ private
     @aplicaciones = Aplicacion.all.map { |aplicacion| [aplicacion.nombre, aplicacion.id] }
     @usuarios = Usuario.all.map { |usuario| [usuario.login, usuario.id] }
     @areas = Area.all.map { |area| [area.nombre, area.id] }
+    @estados = Estado.all.map { |estado| [estado.nombre, estado.id] }
   end
 end

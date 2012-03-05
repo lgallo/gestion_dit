@@ -55,33 +55,7 @@ div {
     font-size: 12px;
     list-style: square; } }
 
-div.left
+.left
 {
   float: left;
-}
-div.right
-{
-  margin-left: 10px;
-  float: right;
-}
-
-th
-{
-  font-size: 8pt;
-}
-
-.purr {
-  position: fixed;
-  top: 30px;
-  right: 100px;
-  width: 250px;
-  padding: 20px;
-  background-color: #FCC;
-  border: solid 2px #C66;
-  &:first-letter { text-transform: uppercase; }
-}
-
-.best_in_place
-{
-  color: blue;
 }

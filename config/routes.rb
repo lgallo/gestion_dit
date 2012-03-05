@@ -1,4 +1,6 @@
 GestionDit::Application.routes.draw do
+  resources :estados
+
   match "/planificaciones_requerimientos/new/:id" => "planificaciones_requerimientos#new"
 
   resources :sessions, only: [:new, :create, :destroy]

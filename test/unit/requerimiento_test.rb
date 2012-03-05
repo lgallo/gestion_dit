@@ -15,6 +15,7 @@
 #  created_at            :datetime
 #  updated_at            :datetime
 #  observaciones         :string(255)
+#  estado_id             :integer
 #
 
 require 'test_helper'

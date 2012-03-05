@@ -50,6 +50,10 @@
 			<%= f.label :dias_estimados %><br />
 			<%= f.number_field :dias_estimados %>
 		</div>
+		<div class="field">
+			<%= f.label :estado %><br/>
+			<%= f.select :estado_id, @estados %>
+		</div>
 	</div>
 
   <div class="actions">

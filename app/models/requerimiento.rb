@@ -15,6 +15,7 @@
 #  created_at            :datetime
 #  updated_at            :datetime
 #  observaciones         :string(255)
+#  estado_id             :integer
 #
 
 class Requerimiento < ActiveRecord::Base
@@ -23,6 +24,7 @@ class Requerimiento < ActiveRecord::Base
   belongs_to :usuario, :foreign_key => "usuario_solicitante"
   belongs_to :area
   belongs_to :usuario, :foreign_key => "lider_desarrollo"
+  belongs_to :estado
   
   def solicitante
     Usuario.find(usuario_solicitante) unless usuario_solicitante.nil?
