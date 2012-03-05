@@ -43,6 +43,8 @@ class RequerimientosController < ApplicationController
   def create
     @requerimiento = Requerimiento.new(params[:requerimiento])
 
+    @requerimiento.numero = Requerimiento.maximum(:numero) + 1
+
     respond_to do |format|
       if @requerimiento.save
         format.html { redirect_to @requerimiento, notice: 'Requerimiento was successfully created.' }

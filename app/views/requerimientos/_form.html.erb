@@ -11,10 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :numero %><br />
-    <%= f.number_field :numero %>
-  </div>
+	<% if @requerimiento.persisted? %>
+	  <div class="field">
+	    <%= f.label :numero %><br />
+	    <%= f.number_field :numero %>
+	  </div>
+	<% end %>
   <div class="field">
     <%= f.label :descripcion %><br />
     <%= f.text_field :descripcion %>
