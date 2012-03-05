@@ -95,6 +95,6 @@
   
 private
   def cargar_areas
-    @areas = Area.all.map { |area| [area.nombre, area.id] }
+    @areas = Area.where(" nombre like '%DIT%' ").map { |area| [area.nombre, area.id] }
   end
 end
