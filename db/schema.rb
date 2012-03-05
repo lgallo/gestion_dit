@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120120144303) do
+ActiveRecord::Schema.define(:version => 20120305180321) do
 
   create_table "aplicaciones", :force => true do |t|
     t.string   "nombre"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120120144303) do
     t.integer  "dias_estimados"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "observaciones"
   end
 
   add_index "requerimientos", ["aplicacion_id"], :name => "index_requerimientos_on_aplicacion_id"
