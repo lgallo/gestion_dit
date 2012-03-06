@@ -26,6 +26,10 @@ class Requerimiento < ActiveRecord::Base
   belongs_to :usuario, :foreign_key => "lider_desarrollo"
   belongs_to :estado
   
+  def self.joined
+    Requerimiento.joins(" JOIN usuarios us ON usuario_solicitante = us.id JOIN areas ON area_id = areas.id ")
+  end
+  
   def solicitante
     Usuario.find(usuario_solicitante) unless usuario_solicitante.nil?
   end

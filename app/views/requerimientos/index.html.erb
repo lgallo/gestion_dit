@@ -5,53 +5,54 @@
 		<%= link_to 'Agregar requerimiento', new_requerimiento_path %>
 	</div>
 
-<table>
-  <tr>
-    <th>#</th>
-    <th>Descripcion</th>
-    <th>Tipo</th>
-    <th>Aplicacion</th>
-    <th>Usuario solicitante</th>
-    <th>Area responsable</th>
-    <th>Fecha fin estimada</th>
-    <th>Lider desarrollo</th>
-    <th>Días est.</th>
-    <th>Estado</th>
-    <th colspan="2">&nbsp;</th>
-  </tr>
-
-<% @requerimientos.each do |requerimiento| %>
-  <tr>
-    <td><%= requerimiento.numero %></td>
-    <td><%= requerimiento.descripcion %></td>
-    <td><%= requerimiento.tipo_requerimiento.nombre[0, 3] %>.</td>
-    <td><%= requerimiento.aplicacion.nombre[0, 6] %> (...)</td>
-    <td>
-    	<% solicitante = requerimiento.solicitante %> 
-		<% unless solicitante.nil? %>
-    		<%= solicitante.apellido %>,&nbsp;
-    		<%= solicitante.nombre %>
-    	<% else %>
-    		-
-    	<% end %>
-    </td>
-    <td><%= requerimiento.area.nombre %></td>
-    <td><%= requerimiento.fecha_fin_estimada %></td>
-    <td>
-    	<% lider = requerimiento.lider %>
-    	<% unless lider.nil? %>
-    		<%= lider.apellido %>,&nbsp;
-    		<%= lider.nombre %>
-    	<% else %>
-    		-
-    	<% end %>
-	</td>
-    <td><%= requerimiento.dias_estimados %></td>
-    <td><%= requerimiento.estado.nombre unless requerimiento.estado.nil? %></td>
-    <td><%= link_to 'Editar', edit_requerimiento_path(requerimiento) %></td>
-    <td><%= link_to 'Borrar', requerimiento, confirm: '¿Está seguro?', method: :delete %></td>
-  </tr>
-<% end %>
+	<table>
+		<thead>
+		    <%= sortable "numero", "#" %>
+		    <%= sortable "descripcion", "Descripción" %>
+		    <th>Tipo</th>
+		    <th>Aplicación</th>
+		    <%= sortable "us.apellido", "Solicitante" %>
+		    <%= sortable "areas.nombre", "Área responsable" %>
+		    <%= sortable "fecha_fin_estimada", "Fecha fin estimada" %>
+		    <th>Lider desarrollo</th>
+		    <th>Días est.</th>
+		    <th>Estado</th>
+		    <th colspan="2">&nbsp;</th>
+  		</thead>
+		<tbody>
+		<% @requerimientos.each do |requerimiento| %>
+		  <tr>
+		    <td><%= requerimiento.numero %></td>
+		    <td><%= requerimiento.descripcion %></td>
+		    <td><%= requerimiento.tipo_requerimiento.nombre[0, 3] %>.</td>
+		    <td><%= requerimiento.aplicacion.nombre[0, 6] %> (...)</td>
+		    <td>
+		    	<% solicitante = requerimiento.solicitante %> 
+				<% unless solicitante.nil? %>
+		    		<%= solicitante.apellido %>,&nbsp;
+		    		<%= solicitante.nombre %>
+		    	<% else %>
+		    		-
+		    	<% end %>
+		    </td>
+		    <td><%= requerimiento.area.nombre %></td>
+		    <td><%= requerimiento.fecha_fin_estimada %></td>
+		    <td>
+		    	<% lider = requerimiento.lider %>
+		    	<% unless lider.nil? %>
+		    		<%= lider.apellido %>,&nbsp;
+		    		<%= lider.nombre %>
+		    	<% else %>
+		    		-
+		    	<% end %>
+			</td>
+		    <td><%= requerimiento.dias_estimados %></td>
+		    <td><%= requerimiento.estado.nombre unless requerimiento.estado.nil? %></td>
+		    <td><%= link_to 'Editar', edit_requerimiento_path(requerimiento) %></td>
+		    <td><%= link_to 'Borrar', requerimiento, confirm: '¿Está seguro?', method: :delete %></td>
+		  </tr>
+		<% end %>
+	</tbody>
 </table>
 
 	<div class="text-right">

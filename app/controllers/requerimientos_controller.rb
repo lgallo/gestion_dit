@@ -1,9 +1,11 @@
 class RequerimientosController < ApplicationController
   before_filter :cargar_combos, :only => [:new, :edit]
+  helper_method :sort_column, :sort_direction
+  
   # GET /requerimientos
   # GET /requerimientos.json
   def index
-    @requerimientos = Requerimiento.all
+    @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -91,5 +93,17 @@ private
     @usuarios = Usuario.all.map { |usuario| [usuario.login, usuario.id] }
     @areas = Area.all.map { |area| [area.nombre, area.id] }
     @estados = Estado.all.map { |estado| [estado.nombre, estado.id] }
+  end
+  
+  def valid_columns
+    %w[us.apellido areas.nombre].concat(Requerimiento.column_names)
+  end
+  
+  def sort_column
+    valid_columns.include?(params[:sort]) ? params[:sort] : "numero"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
