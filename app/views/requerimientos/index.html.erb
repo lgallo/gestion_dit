@@ -20,14 +20,14 @@
 		    <th colspan="2">&nbsp;</th>
   		</thead>
 		<tbody>
-		<% @requerimientos.each do |requerimiento| %>
+		<% @requerimientos.each do |r| %>
 		  <tr>
-		    <td><%= requerimiento.numero %></td>
-		    <td><%= requerimiento.descripcion %></td>
-		    <td><%= requerimiento.tipo_requerimiento.nombre[0, 3] %>.</td>
-		    <td><%= requerimiento.aplicacion.nombre[0, 6] %> (...)</td>
+		    <td><%= r.numero %></td>
+		    <td><%= r.descripcion %></td>
+		    <td><%= r.tipo_requerimiento.nombre[0, 3] %>.</td>
+		    <td><%= r.aplicacion.nombre[0, 6] %> (...)</td>
 		    <td>
-		    	<% solicitante = requerimiento.solicitante %> 
+		    	<% solicitante = r.solicitante %> 
 				<% unless solicitante.nil? %>
 		    		<%= solicitante.apellido %>,&nbsp;
 		    		<%= solicitante.nombre %>
@@ -35,10 +35,10 @@
 		    		-
 		    	<% end %>
 		    </td>
-		    <td><%= requerimiento.area.nombre %></td>
-		    <td><%= requerimiento.fecha_fin_estimada %></td>
+		    <td><%= r.area.nombre %></td>
+		    <td><%= pretty_date(r.fecha_fin_estimada) %></td>
 		    <td>
-		    	<% lider = requerimiento.lider %>
+		    	<% lider = r.lider %>
 		    	<% unless lider.nil? %>
 		    		<%= lider.apellido %>,&nbsp;
 		    		<%= lider.nombre %>
@@ -46,10 +46,10 @@
 		    		-
 		    	<% end %>
 			</td>
-		    <td><%= requerimiento.dias_estimados %></td>
-		    <td><%= requerimiento.estado.nombre unless requerimiento.estado.nil? %></td>
-		    <td><%= link_to 'Editar', edit_requerimiento_path(requerimiento) %></td>
-		    <td><%= link_to 'Borrar', requerimiento, confirm: '¿Está seguro?', method: :delete %></td>
+		    <td><%= r.dias_estimados %></td>
+		    <td><%= r.estado.nombre unless r.estado.nil? %></td>
+		    <td><%= link_to 'Editar', edit_requerimiento_path(r) %></td>
+		    <td><%= link_to 'Borrar', r, confirm: '¿Está seguro?', method: :delete %></td>
 		  </tr>
 		<% end %>
 	</tbody>
