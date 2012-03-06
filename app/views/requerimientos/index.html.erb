@@ -26,6 +26,7 @@
 		    <th>Responsable DIT</th>
 		    <th>Días est.</th>
 		    <th>Estado</th>
+		    <%= sortable 'prioridad' %>
 		    <th colspan="2">&nbsp;</th>
   		</thead>
 		<tbody>
@@ -44,7 +45,7 @@
 		    		-
 		    	<% end %>
 		    </td>
-		    <td><%= r.area.nombre %></td>
+		    <td><%= shorten(r.area.nombre, 6) %></td>
 		    <td><%= pretty_date(r.fecha_fin_estimada) %></td>
 		    <td>
 		    	<% lider = r.lider %>
@@ -57,6 +58,7 @@
 			</td>
 		    <td><%= r.dias_estimados %></td>
 		    <td><%= r.estado.nombre unless r.estado.nil? %></td>
+		    <td><%= r.prioridad %></td>
 		    <td><%= link_to 'Editar', edit_requerimiento_path(r) %></td>
 		    <td><%= link_to 'Borrar', r, confirm: '¿Está seguro?', method: :delete %></td>
 		  </tr>

@@ -16,6 +16,8 @@
 #  updated_at            :timestamp
 #  observaciones         :string(255)
 #  estado_id             :integer
+#  link_externo          :string(255)
+#  prioridad             :integer
 #
 
 class Requerimiento < ActiveRecord::Base

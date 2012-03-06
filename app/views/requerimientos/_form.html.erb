@@ -25,6 +25,10 @@
 			<%= f.select :aplicacion_id, @aplicaciones %>
 		</div>
 		<div class="field">
+			<%= f.label :area %><br />
+			<%= f.select :area_id, @areas %>
+		</div>
+		<div class="field">
 			<%= f.label :usuario_solicitante %><br />
 			<%= f.select :usuario_solicitante, @usuarios %>
 		</div>
@@ -35,13 +39,13 @@
 	</div>
 	<div class="left" style="width: 50%">
 		<div class="field">
-			<%= f.label :area %><br />
-			<%= f.select :area_id, @areas %>
-		</div>
-		<div class="field">
 			<%= f.label :fecha_fin_estimada %><br />
 			<%= f.date_select :fecha_fin_estimada, :include_blank => true %>
 		</div>  
+		<div class="field">
+			<%= f.label :link_externo %><br />
+			<%= f.text_field :link_externo %>
+		</div>
 		<div class="field">
 			Responsable DIT<br />
 			<%= f.select :lider_desarrollo, @usuarios %>
@@ -49,6 +53,10 @@
 		<div class="field">
 			<%= f.label :dias_estimados %><br />
 			<%= f.number_field :dias_estimados %>
+		</div>
+		<div class="field">
+			<%= f.label :prioridad %><br />
+			<%= f.number_field :prioridad %>
 		</div>
 		<div class="field">
 			<%= f.label :estado %><br/>

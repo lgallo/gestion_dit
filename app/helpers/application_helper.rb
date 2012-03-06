@@ -1,4 +1,8 @@
 module ApplicationHelper
+
+  def shorten(text, length)
+    text[0, length].concat(' (...)') unless text.nil? or text.empty? or text.length <= length
+  end
   
   def pretty_date(value)
     if value.nil?
