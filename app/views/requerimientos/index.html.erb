@@ -30,7 +30,7 @@
   		</thead>
 		<tbody>
 		<% @requerimientos.each do |r| %>
-		  <tr>
+		  <tr title="<%= r.observaciones %>">
 		    <td><%= r.numero %></td>
 		    <td><%= r.descripcion %></td>
 		    <td><%= r.tipo_requerimiento.nombre[0, 3] %>.</td>
