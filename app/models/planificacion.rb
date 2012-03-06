@@ -21,7 +21,7 @@ class Planificacion < ActiveRecord::Base
   def dias_asignados
     asignados = 0
     self.planificaciones_requerimientos.each do |pr|
-      asignados += pr.dedicacion_mes
+      asignados += pr.dedicacion_mes unless pr.dedicacion_mes.nil?
     end
     asignados
   end
