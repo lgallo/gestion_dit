@@ -1,7 +1,11 @@
 module ApplicationHelper
   
   def pretty_date(value)
-    value.year == Time.now.year ? I18n.localize(value, :format => '%d %b') : I18n.localize(value, :format => '%d %b %Y')
+    if value.nil?
+      '-'
+    else
+      value.year == Time.now.year ? I18n.localize(value, :format => '%d %b') : I18n.localize(value, :format => '%d %b %Y')
+    end
   end
   
   def select_meses(form_builder, campo)
