@@ -1,5 +1,14 @@
 
-	<h1>Listado de requerimientos</h1>
+	<h1>
+		Listado de requerimientos en estado
+		<form style="display: inline;">
+			<select name="estado_id" onchange="javascript: this.parentNode.submit();">
+				<% @estados.each do |e| %>
+					<option value="<%= e.id %>" <%= 'selected' if !@estado_id.nil? and e.id.to_i == @estado_id.to_i %>><%= e.nombre %></option>
+				<% end %>
+			</select>
+		</form> 
+	</h1>
 
 	<div class="text-right">
 		<%= link_to 'Agregar requerimiento', new_requerimiento_path %>

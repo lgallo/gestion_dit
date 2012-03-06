@@ -5,7 +5,16 @@ class RequerimientosController < ApplicationController
   # GET /requerimientos
   # GET /requerimientos.json
   def index
-    @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction)
+    @estado_id = params[:estado_id]
+    
+    if @estado_id.nil? or @estado_id.empty?
+      @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction)
+    else
+      @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction).where(:estado_id => @estado_id)
+    end
+    
+    @estados = [Estado.new] 
+    @estados.concat Estado.order(:nombre)
 
     respond_to do |format|
       format.html # index.html.erb
