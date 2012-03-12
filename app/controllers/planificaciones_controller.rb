@@ -5,14 +5,10 @@
   # GET /planificaciones.json
   def index
     @id_area = params[:id_area]
+    @periodo = params[:periodo] || 'este_mes'
     
-    if @id_area.nil? or @id_area.empty?
-      @planificaciones = Planificacion.all
-    else
-      @planificaciones = Planificacion.where(:area_id => @id_area)
-    end
-    
-    @planificaciones.sort_by!{ |p| [p.anio, p.mes]}.reverse!
+    @planificaciones = Planificacion.filtrar_por_periodo(@periodo, @id_area)    
+    @planificaciones.sort_by!{ |p| [p.anio, p.mes]}.reverse! unless @planificaciones.nil?
     
     @areas = [Area.new( :id => -1, :nombre => "todas las áreas")].concat(Area.where(" nombre like '%DIT%' "))
 

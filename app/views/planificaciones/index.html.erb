@@ -7,6 +7,13 @@
 					<%= a.nombre %>
 				</option>
 			<% end %>
+		</select> 
+		durante 
+		<select name="periodo" onchange="javascript: document.getElementById('filtro').submit();">
+			<option value="este_mes" <%= "selected" if @periodo == 'este_mes' %>>este mes</option>
+			<option value="mes_y_prox" <%= "selected" if @periodo == 'mes_y_prox' %>>este mes y el próximo</option>
+			<option value="todo_el_anio" <%= "selected" if @periodo == 'todo_el_anio' %>>todo el año</option>
+			<option value="todos" <%= "selected" if @periodo == 'todos' %>>todos los períodos</option>
 		</select>
 	</h1>
 </form>

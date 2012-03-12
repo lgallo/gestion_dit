@@ -18,6 +18,29 @@ class Planificacion < ActiveRecord::Base
   belongs_to :area
   has_many :planificaciones_requerimientos, :class_name => "PlanificacionRequerimiento"
 
+  def self.filtrar_por_periodo(periodo, area_id)
+    hoy = Date.today
+    
+    case periodo
+      when 'este_mes'
+        sql_periodo = " mes = #{hoy.month} and anio = #{hoy.year} "
+      when 'mes_y_prox'
+        sql_periodo = " (mes = #{hoy.month} or mes = #{hoy.month + 1}) and anio = #{hoy.year} "
+      when 'todo_el_anio'
+        sql_periodo = " anio = #{hoy.year} "
+      else
+        sql_periodo = ""
+    end
+    
+    unless area_id.nil? or area_id.empty?
+      sql_area = (sql_periodo.nil? or sql_periodo.empty? ? "": " and ") + " area_id = #{area_id} "
+    else
+      sql_area = ""
+    end
+    
+    Planificacion.where("#{sql_periodo} #{sql_area}")
+  end
+
   def dias_asignados
     asignados = 0
     self.planificaciones_requerimientos.each do |pr|
