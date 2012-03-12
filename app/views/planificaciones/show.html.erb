@@ -3,7 +3,13 @@
 <div>
 	<div class="left" style="width: 100%">
 		<div class="left">
-			<h2><%= @planificacion.descripcion %></h2>
+			<h2>
+				<%= @planificacion.area.nombre %>
+				&nbsp;/&nbsp;
+				<%= best_in_place @planificacion, :mes, :type => :select, :collection => MESES.map { |k, v| [v, k] } %>
+				&nbsp;de&nbsp;
+				<%= best_in_place @planificacion, :anio, :type => :select, :collection => ANIOS.collect { |a| [a, a.to_s] } %>
+			</h2>
 		</div>
 		<div class="right">
 			<%= link_to 'Volver', planificaciones_path %>
