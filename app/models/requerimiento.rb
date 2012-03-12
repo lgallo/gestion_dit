@@ -27,6 +27,11 @@ class Requerimiento < ActiveRecord::Base
   belongs_to :area
   belongs_to :usuario, :foreign_key => "lider_desarrollo"
   belongs_to :estado
+
+  def nombre_combo
+    app = self.aplicacion.nombre[0, 5]
+    "\##{numero} (#{app}...) #{self.descripcion}"  
+  end
   
   def self.joined
     Requerimiento.joins(" JOIN usuarios us ON usuario_solicitante = us.id JOIN areas ON area_id = areas.id ")
