@@ -54,7 +54,7 @@
   <% else %>
 	  <div class="field">
 	    <%= f.label :requerimiento %><br />
-	    <%= f.select :requerimiento_id, Requerimiento.all.map { |r| [r.nombre_combo, r.id] } %>
+	    <%= f.select :requerimiento_id, @requerimientos %>
 	  </div>
   <% end %>
   

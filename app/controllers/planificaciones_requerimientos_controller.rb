@@ -27,6 +27,8 @@ class PlanificacionesRequerimientosController < ApplicationController
     @planificacion_requerimiento = PlanificacionRequerimiento.new    
     @planificacion_requerimiento.planificacion = Planificacion.find_by_id(params[:id]) 
 
+    @requerimientos = Requerimiento.joins(:estado).where(" estados.nombre <> 'Finalizado' ").map { |r| [r.nombre_combo, r.id] }
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @planificacion_requerimiento }
