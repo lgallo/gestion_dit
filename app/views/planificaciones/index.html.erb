@@ -43,7 +43,7 @@
 <% @planificaciones.each do |planificacion|
 	asignados = planificacion.dias_asignados
 	restantes = planificacion.dias_totales - asignados %>
-  <tr>
+  <tr class="<%= estado(planificacion.dias_totales, asignados, restantes) %>">
     <td><%= MESES[planificacion.mes - 1][0] %></td>
     <td><%= planificacion.anio %></td>
     <td><%= planificacion.cantidad_personas %></td>

@@ -97,3 +97,18 @@ th.desc
 {
   color: blue;
 }
+
+tr.subplanificado td
+{
+  background-color: #f2f388;
+}
+
+tr.sobreplanificado td
+{
+  background-color: #ff4242;
+}
+
+tr.planif_completa td
+{
+  background-color: #bfffbd;
+}
