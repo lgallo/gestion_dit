@@ -18,7 +18,7 @@
 		<th>Este mes</th>
 	</tr>
 	<% @planificacion.planificaciones_requerimientos.each do |p| %>
-		<tr>
+		<tr title="<%= p.requerimiento.observaciones %>">
 			<td><%= p.requerimiento.numero %></td>
 			<td><%= p.requerimiento.descripcion %></td>
 			<td><%= p.requerimiento.tipo_requerimiento.nombre %></td>
