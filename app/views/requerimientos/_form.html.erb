@@ -11,7 +11,7 @@
 			</div>
   		<% end %>
 
-		<legend>Requerimiento</legend>
+		<legend>Requerimiento <%=  "\##{@requerimiento.numero}" if @requerimiento.persisted? %></legend>
 
 		<div class="row">
 			<div class="span6">
