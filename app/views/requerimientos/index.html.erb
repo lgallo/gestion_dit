@@ -1,71 +1,90 @@
 
-	<h1>
-		Listado de requerimientos en estado
-		<form style="display: inline;">
-			<select name="estado_id" onchange="javascript: this.parentNode.submit();">
-				<% @estados.each do |e| %>
-					<option value="<%= e.id %>" <%= 'selected' if !@estado_id.nil? and e.id.to_i == @estado_id.to_i %>><%= e.nombre %></option>
-				<% end %>
-			</select>
-		</form> 
-	</h1>
-
-	<div class="text-right">
-		<%= link_to 'Agregar requerimiento', new_requerimiento_path %>
+	<div class="row">
+		<div class="span12">
+			<form style="display: inline;">
+				<legend>
+					<div class="row">
+						<div class="span10">
+							Listado de requerimientos en estado
+							<select name="estado_id" onchange="javascript: this.parentNode.parentNode.parentNode.parentNode.submit();">
+								<% @estados.each do |e| %>
+									<option value="<%= e.id %>" <%= 'selected' if !@estado_id.nil? and e.id.to_i == @estado_id.to_i %>><%= e.nombre %></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="span2">
+							<%= link_to 'Agregar requerimiento', new_requerimiento_path, :class => 'btn btn-primary' %>
+						</div>
+					</div>
+				</legend>
+			</form> 
+		</div>
 	</div>
 
-	<table>
-		<thead>
-		    <%= sortable "numero", "#" %>
-		    <%= sortable "descripcion", "Descripción" %>
-		    <th>Tipo</th>
-		    <th>Aplicación</th>
-		    <%= sortable "us.apellido", "Solicitante" %>
-		    <%= sortable "areas.nombre", "Área responsable" %>
-		    <%= sortable "fecha_fin_estimada", "Fecha fin estimada" %>
-		    <th>Responsable DIT</th>
-		    <th>Días est.</th>
-		    <th>Estado</th>
-		    <%= sortable 'prioridad' %>
-		    <th colspan="2">&nbsp;</th>
-  		</thead>
-		<tbody>
-		<% @requerimientos.each do |r| %>
-		  <tr title="<%= r.observaciones %>">
-		    <td><%= r.numero %></td>
-		    <td><%= r.descripcion %></td>
-		    <td><%= r.tipo_requerimiento.nombre[0, 3] %>.</td>
-		    <td><%= r.aplicacion.nombre[0, 6] %> (...)</td>
-		    <td>
-		    	<% solicitante = r.solicitante %> 
-				<% unless solicitante.nil? %>
-		    		<%= solicitante.apellido %>,&nbsp;
-		    		<%= solicitante.nombre %>
-		    	<% else %>
-		    		-
-		    	<% end %>
-		    </td>
-		    <td><%= shorten(r.area.nombre, 6) %></td>
-		    <td><%= pretty_date(r.fecha_fin_estimada) %></td>
-		    <td>
-		    	<% lider = r.lider %>
-		    	<% unless lider.nil? %>
-		    		<%= lider.apellido %>,&nbsp;
-		    		<%= lider.nombre %>
-		    	<% else %>
-		    		-
-		    	<% end %>
-			</td>
-		    <td><%= r.dias_estimados %></td>
-		    <td><%= r.estado.nombre unless r.estado.nil? %></td>
-		    <td><%= r.prioridad %></td>
-		    <td><%= link_to 'Editar', edit_requerimiento_path(r) %></td>
-		    <td><%= link_to 'Borrar', r, confirm: '¿Está seguro?', method: :delete %></td>
-		  </tr>
-		<% end %>
-	</tbody>
-</table>
+	<div class="row">
+		<div class="span12">
+			<table class="table table-bordered table-striped">
+				<thead>
+				    <%= sortable "numero", "#" %>
+				    <%= sortable "descripcion", "Descripción" %>
+				    <th>Tipo</th>
+				    <th>Aplicación</th>
+				    <%= sortable "us.apellido", "Solicitante" %>
+				    <%= sortable "areas.nombre", "Área responsable" %>
+				    <%= sortable "fecha_fin_estimada", "Fecha fin estimada" %>
+				    <th>Responsable DIT</th>
+				    <th>Días est.</th>
+				    <th>Estado</th>
+				    <%= sortable 'prioridad' %>
+				    <th colspan="2">&nbsp;</th>
+		  		</thead>
+				<tbody>
+				<% @requerimientos.each do |r| %>
+				  <tr title="<%= r.observaciones %>">
+				    <td><%= r.numero %></td>
+				    <td><%= r.descripcion %></td>
+				    <td><%= r.tipo_requerimiento.nombre[0, 3] %>.</td>
+				    <td><%= r.aplicacion.nombre[0, 6] %> (...)</td>
+				    <td>
+				    	<% solicitante = r.solicitante %> 
+						<% unless solicitante.nil? %>
+				    		<%= solicitante.apellido %>,&nbsp;
+				    		<%= solicitante.nombre %>
+				    	<% else %>
+				    		-
+				    	<% end %>
+				    </td>
+				    <td><%= shorten(r.area.nombre, 6) %></td>
+				    <td><%= pretty_date(r.fecha_fin_estimada) %></td>
+				    <td>
+				    	<% lider = r.lider %>
+				    	<% unless lider.nil? %>
+				    		<%= lider.apellido %>,&nbsp;
+				    		<%= lider.nombre %>
+				    	<% else %>
+				    		-
+				    	<% end %>
+					</td>
+				    <td><%= r.dias_estimados %></td>
+				    <td><%= r.estado.nombre unless r.estado.nil? %></td>
+				    <td><%= r.prioridad %></td>
+				    <td><%= link_to 'Editar', edit_requerimiento_path(r) %></td>
+				    <td><%= link_to 'Borrar', r, confirm: '¿Está seguro?', method: :delete %></td>
+				  </tr>
+				<% end %>
+			</tbody>
+		</table>
+		</div>
+	</div>
 
-	<div class="text-right">
-		<%= link_to 'Agregar requerimiento', new_requerimiento_path %>
+	<div class="row">
+		<div class="span12">
+			<div class="form-actions">
+				<div class="row">
+					<div class="right">
+						<%= link_to 'Agregar requerimiento', new_requerimiento_path, :class => 'btn btn-primary' %>						
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>

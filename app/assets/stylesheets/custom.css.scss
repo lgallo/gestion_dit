@@ -20,7 +20,7 @@ th.header
   text-decoration: underline;
 }
 
-th.asc
+.table-striped thead tr th.asc
 { 
   padding-right: 12px;
   background-repeat: no-repeat;
@@ -28,7 +28,7 @@ th.asc
   background-image: image-url("up_arrow.gif"); 
 }
 
-th.desc
+.table-striped thead tr th.desc
 { 
   padding-right: 12px;
   background-repeat: no-repeat;
