@@ -1,49 +1,69 @@
-<p id="notice"><%= notice %></p>
 
-<div>
-	<div class="left" style="width: 100%">
-		<div class="left">
-			<h2>
+	<div class="row">
+		<div class="span12">
+			<legend>
 				<%= @planificacion.area.nombre %>
 				&nbsp;/&nbsp;
 				<%= best_in_place @planificacion, :mes, :type => :select, :collection => MESES.map { |k, v| [v, k] } %>
 				&nbsp;de&nbsp;
 				<%= best_in_place @planificacion, :anio, :type => :select, :collection => ANIOS.collect { |a| [a, a.to_s] } %>
-			</h2>
-		</div>
-		<div class="right">
-			<%= link_to 'Volver', planificaciones_path %>
-		</div>		
-	</div>
-	
-	<div>
-		<div class="left" style="width: 250px;">
-			<p>
-			  <b>Cantidad personas:</b>
-			  <%= best_in_place @planificacion, :cantidad_personas, :html_attrs => { :size => '1', :class => 'editable' } %>
-			</p>
-			<p>
-			  <b>D&iacute;as en el mes:</b>
-			  <%= best_in_place @planificacion, :dias_mes, :html_attrs => { :size => '1' } %>
-			</p>
-		</div>
-		<div class="left">
-			<p>
-			  <b>D&iacute;as disponibles (por recursos y dedicaci&oacute;n):</b>
-			  <%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %>
-			</p>
-			<p>
-			  <b>Coeficiente ajuste:</b>
-			  <%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %>
-			</p>
+			</legend>
 		</div>
 	</div>
-	<div class="left" style="width: 100%">
-		<%= render 'planificaciones/requerimientos_mes' %>
+
+	<div class="row">
+		<div class="span12">
+			<p id="notice"><%= notice %></p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span12">
+			<div class="well">
+				<div class="row">
+					<div class="span4">
+						<div class="row">
+							<div class="span2">
+								<b>Cantidad de personas:</b>
+							</div>
+							<%= best_in_place @planificacion, :cantidad_personas, :html_attrs => { :class => 'input-mini' } %>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="span2">
+								<b>D&iacute;as en el mes:</b>
+							</div>
+						  <%= best_in_place @planificacion, :dias_mes, :html_attrs => { :class => 'input-mini' } %>
+						</div>
+					</div>
+					<div class="span5">
+						<div class="row">
+							<div class="span4">
+								<b>D&iacute;as disponibles (por recursos y dedicaci&oacute;n):</b>					
+							</div>
+							<%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %>
+						</div>
+						<br />
+						<div class="row">
+							<div class="span4">
+								<b>Coeficiente ajuste:</b>
+							</div>
+							<%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	
-	<div class="right">
-		<%= link_to 'Volver', planificaciones_path %>
-	</div>		
+	<%= render 'planificaciones/requerimientos_mes' %>
+
+	<div class="row">
+		<div class="span12">
+			<div class="form-actions">
+				<%= link_to 'Agregar requerimiento', "#{new_planificacion_requerimiento_path}/#{@planificacion.id}", :class => 'btn btn-primary' %>
+				<%= link_to 'Volver', planificaciones_path, :class => 'btn' %>
+			</div>
+		</div>
+	</div>
 	
-</div>

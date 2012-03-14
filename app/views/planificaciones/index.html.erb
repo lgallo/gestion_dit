@@ -1,64 +1,77 @@
-<form id="filtro"> 
-	<h1>
-		Listado de planificaciones de 
-		<select name="id_area" onchange="javascript: document.getElementById('filtro').submit();">
-			<% @areas.each do |a| %>
-				<option value="<%= a.id %>" <%= "selected" if a.id.to_i == @id_area.to_i %>>
-					<%= a.nombre %>
-				</option>
-			<% end %>
-		</select> 
-		durante 
-		<select name="periodo" onchange="javascript: document.getElementById('filtro').submit();">
-			<option value="este_mes" <%= "selected" if @periodo == 'este_mes' %>>este mes</option>
-			<option value="mes_y_prox" <%= "selected" if @periodo == 'mes_y_prox' %>>este mes y el próximo</option>
-			<option value="todo_el_anio" <%= "selected" if @periodo == 'todo_el_anio' %>>todo el año</option>
-			<option value="todos" <%= "selected" if @periodo == 'todos' %>>todos los períodos</option>
-		</select>
-	</h1>
-</form>
 
-<div class="text-right">
-	<%= link_to 'Agregar planificación', new_planificacion_path %>
+<div class="row-fluid">
+	
+	<form id="filtro"> 
+		<legend>
+			Listado de planificaciones de 
+			<select name="id_area" onchange="javascript: document.getElementById('filtro').submit();">
+				<% @areas.each do |a| %>
+					<option value="<%= a.id %>" <%= "selected" if a.id.to_i == @id_area.to_i %>>
+						<%= a.nombre %>
+					</option>
+				<% end %>
+			</select> 
+			durante 
+			<select name="periodo" onchange="javascript: document.getElementById('filtro').submit();">
+				<option value="este_mes" <%= "selected" if @periodo == 'este_mes' %>>este mes</option>
+				<option value="mes_y_prox" <%= "selected" if @periodo == 'mes_y_prox' %>>este mes y el próximo</option>
+				<option value="todo_el_anio" <%= "selected" if @periodo == 'todo_el_anio' %>>todo el año</option>
+				<option value="todos" <%= "selected" if @periodo == 'todos' %>>todos los períodos</option>
+			</select>
+		</legend>
+	</form>
+	
 </div>
 
-<table>
-  <tr>
-    <th rowspan="2">Mes</th>
-    <th rowspan="2">A&ntilde;o</th>
-    <th rowspan="2">Cantidad personas</th>
-    <th rowspan="2">D&iacute;as mes</th>
-    <th rowspan="2">Coeficiente ajuste</th>
-    <th colspan="3">D&iacute;as</th>
-    <th rowspan="2">&Aacute;rea</th>
-    <th rowspan="2"></th>
-    <th rowspan="2"></th>
-  </tr>
-  <tr>
-    <th>Totales</th>
-    <th>Asignados</th>
-    <th>Por asignar</th>
-  </tr>
 
-<% @planificaciones.each do |planificacion|
-	asignados = planificacion.dias_asignados
-	restantes = planificacion.dias_totales - asignados %>
-  <tr class="<%= estado(planificacion.dias_totales, asignados, restantes) %>">
-    <td><%= MESES[planificacion.mes - 1][0] %></td>
-    <td><%= planificacion.anio %></td>
-    <td><%= planificacion.cantidad_personas %></td>
-    <td><%= planificacion.dias_mes %></td>
-    <td><%= planificacion.coeficiente_ajuste %></td>
-    <td><%= planificacion.dias_totales %></td>
-    <td><%= asignados %></td>
-    <td><%= restantes %></td>
-    <td><%= planificacion.area.nombre %></td>
-    <td><%= link_to 'Detalle', planificacion %></td>
-    <td><%= link_to 'Borrar', planificacion, confirm: '¿Está seguro?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div class="row-fluid">
+	
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th rowspan="2">Mes</th>
+				<th rowspan="2">A&ntilde;o</th>
+				<th rowspan="2">Cantidad personas</th>
+				<th rowspan="2">D&iacute;as mes</th>
+				<th rowspan="2">Coeficiente ajuste</th>
+				<th colspan="3">D&iacute;as</th>
+				<th rowspan="2">&Aacute;rea</th>
+				<th rowspan="2"></th>
+				<th rowspan="2"></th>
+			</tr>
+			<tr>
+				<th>Totales</th>
+				<th>Asignados</th>
+				<th>Por asignar</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @planificaciones.each do |planificacion|
+			asignados = planificacion.dias_asignados
+			restantes = planificacion.dias_totales - asignados %>
+	  		<tr class="<%= estado(planificacion.dias_totales, asignados, restantes) %>">
+	    		<td><%= MESES[planificacion.mes - 1][0] %></td>
+			    <td><%= planificacion.anio %></td>
+			    <td><%= planificacion.cantidad_personas %></td>
+			    <td><%= planificacion.dias_mes %></td>
+			    <td><%= planificacion.coeficiente_ajuste %></td>
+			    <td><%= planificacion.dias_totales %></td>
+			    <td><%= asignados %></td>
+			    <td><%= restantes %></td>
+			    <td><%= planificacion.area.nombre %></td>
+			    <td><%= link_to 'Detalle', planificacion %></td>
+			    <td><%= link_to 'Borrar', planificacion, confirm: '¿Está seguro?', method: :delete %></td>
+		  	</tr>
+		<% end %>
+		</tbody>	
+	</table>
 
-<div class="text-right">
-	<%= link_to 'Agregar planificación', new_planificacion_path %>
 </div>
+
+	<div class="row">
+		<div class="span12">
+			<div class="form-actions">
+				<%= link_to 'Agregar planificación', new_planificacion_path, :class => 'btn btn-primary' %>
+			</div>
+		</div>	
+	</div>

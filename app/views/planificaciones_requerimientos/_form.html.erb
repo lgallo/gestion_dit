@@ -1,22 +1,21 @@
-<%= form_for(@planificacion_requerimiento) do |f| %>
-  <% if @planificacion_requerimiento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@planificacion_requerimiento.errors.count, "error") %> prohibited this planificacion_requerimiento from being saved:</h2>
 
-      <ul>
-      <% @planificacion_requerimiento.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<%= form_for(@planificacion_requerimiento, :html => { :class => 'form-horizontal' } ) do |f| %>
+  		<% if @planificacion_requerimiento.errors.any? %>
+    		<div id="error_explanation">
+      			<h2><%= pluralize(@planificacion_requerimiento.errors.count, "error") %> prohibited this planificacion_requerimiento from being saved:</h2>
 
-  <div class="field">
-  	<%= f.hidden_field :planificacion_id %>
-    <h2><%= @planificacion_requerimiento.planificacion.descripcion %></h2>
-  </div>
+      			<ul>
+      				<% @planificacion_requerimiento.errors.full_messages.each do |msg| %>
+        				<li><%= msg %></li>
+      				<% end %>
+      			</ul>
+    		</div>
+  		<% end %>
+
+  		<%= f.hidden_field :planificacion_id %>
+    	<legend><%= @planificacion_requerimiento.planificacion.descripcion %></legend>
   
-  <% unless @planificacion_requerimiento.requerimiento.nil? %>
+  		<% unless @planificacion_requerimiento.requerimiento.nil? %>
   	<div class="left">
 	  	<div class="left">
 		  <p>
@@ -51,19 +50,20 @@
 		  </p>
 	  	</div>
   	</div>
-  <% else %>
-	  <div class="field">
-	    <%= f.label :requerimiento %><br />
-	    <%= f.select :requerimiento_id, @requerimientos %>
-	  </div>
-  <% end %>
+		<% else %>
+	  		<div class="control-group">	  			
+	    		<%= f.label :requerimiento, :class => 'control-label' %>
+	    		<div class="controls"><%= f.select :requerimiento_id, @requerimientos, {}, {:class => 'span5'} %></div>
+			</div>
+  		<% end %>
   
-	  <div class="field">
-	    <%= f.label :dedicacion_mes %><br />
-	    <%= f.number_field :dedicacion_mes %>
-	  </div>
-	  <div class="actions">
-	    <%= f.submit %>
-	  </div>
-  </div>
-<% end %>
+	  		<div class="control-group">
+	    		<%= f.label :dedicacion_mes, :class => 'control-label' %>
+	    		<div class="controls"><%= f.number_field :dedicacion_mes %></div>
+	  		</div>
+	  		
+	  		<div class="form-actions">
+	    		<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
+	    		<%= link_to 'Back', planificacion_path(@planificacion_requerimiento.planificacion), :class => 'btn' %>
+	  		</div>
+	<% end %>

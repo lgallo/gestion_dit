@@ -1,68 +1,47 @@
 <!DOCTYPE HTML>
 
 <html>
+	
 	<head>
-		  <title>Gesti&oacute;n de la DIT</title>
-		  <%= stylesheet_link_tag    "application" %>
-		  <%= javascript_include_tag "application" %>
-		  <%= csrf_meta_tags %>
+		<title>Gesti&oacute;n de la DIT</title>
+		<%= stylesheet_link_tag    "bootstrap" %>
+		<%= stylesheet_link_tag		"custom" %>
+	    <style type="text/css">
+	      body {
+	        padding-top: 60px;
+	        padding-bottom: 40px;
+	      }
+	    </style>
+	    
+	    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	    <!--[if lt IE 9]>
+	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+	    
+		<%= csrf_meta_tags %>
 		<meta name="description" content="website description">
 		<meta name="keywords" content="website keywords, website keywords">
 		<meta http-equiv="content-type" content="text/html; charset=windows-1252">
 	</head>
+	
 	<body>
-		<div id="main">
-			<%= render 'layouts/header' %>
 
-			<div id="site_content">
-				<div id="content">
-					<%= yield %>
-				</div>
-			<!--			
-				<div id="sidebar_container">
-					<div class="sidebar">
-						<div class="sidebar_top"></div>
-							<div class="sidebar_item">
-								<!-- insert your sidebar items here ->
-								<h3>Latest News</h3>
-								<h4>New Website Launched</h4>
-								<h5>January 1st, 2010</h5>
-								<p>2010 sees the redesign of our website..... <a href="#">read more</a></p>
-							</div>
-							<div class="sidebar_base"></div>
-						</div>
-						<div class="sidebar">
-							<div class="sidebar_top"></div>
-								<div class="sidebar_item">
-									<h3>Useful Links</h3>
-									<ul>
-										<li><a href="#">link 1</a></li>
-										<li><a href="#">link 2</a></li>
-										<li><a href="#">link 3</a></li>
-										<li><a href="#">link 4</a></li>
-									</ul>
-								</div>
-								<div class="sidebar_base"></div>
-							</div>							
-							<div class="sidebar">
-								<div class="sidebar_top"></div>
-									<div class="sidebar_item">
-										<h3>Search</h3>
-										<form method="post" action="#" id="search_form">
-											<p>
-												<input class="search" type="text" name="search_field" value="Enter keywords....."><input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search">
-											</p>
-										</form>
-									</div>
-									<div class="sidebar_base"></div>
-								</div>
-							</div>
-						-->
-			</div>
+		<%= render 'layouts/header' %>
+		
+		<div class="container">
 			
+			<%= yield %>
+
 			<%= render 'layouts/footer' %>
-		</div>
+		
+	    </div> <!-- /container -->
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<%= javascript_include_tag "bootstrap" %>
+		<%= javascript_include_tag "application" %>
   
 	</body>
+	
 </html>
-
