@@ -1,70 +1,80 @@
-<%= form_for(@requerimiento) do |f| %>
-  <% if @requerimiento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@requerimiento.errors.count, "error") %> prohibited this requerimiento from being saved:</h2>
 
-      <ul>
-      <% @requerimiento.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<%= form_for(@requerimiento, :html => { :class => 'form-horizontal' } ) do |f| %>
+  		<% if @requerimiento.errors.any? %>
+    		<div id="error_explanation">
+      			<h2><%= pluralize(@requerimiento.errors.count, "error") %> prohibited this requerimiento from being saved:</h2>
+      			<ul>
+      				<% @requerimiento.errors.full_messages.each do |msg| %>
+        				<li><%= msg %></li>
+      				<% end %>
+      			</ul>
+			</div>
+  		<% end %>
 
-	<div class="left" style="width: 50%">
-		<div class="field">
-			<%= f.label :descripcion %><br />
-			<%= f.text_field :descripcion %>
-		</div>
-		<div class="field">
-			<%= f.label 'Tipo de actividad' %><br />
-			<%= f.select :tipo_requerimiento_id, @tipos_requerimientos %>
-		</div>
-		<div class="field">
-			<%= f.label :aplicacion %><br />
-			<%= f.select :aplicacion_id, @aplicaciones %>
-		</div>
-		<div class="field">
-			<%= f.label :area %><br />
-			<%= f.select :area_id, @areas %>
-		</div>
-		<div class="field">
-			<%= f.label :usuario_solicitante %><br />
-			<%= f.select :usuario_solicitante, @usuarios %>
-		</div>
-		<div class="field">
-			<%= f.label :observaciones %><br />
-			<%= f.text_area :observaciones, :size => '50x6' %>
-		</div>
-	</div>
-	<div class="left" style="width: 50%">
-		<div class="field">
-			<%= f.label :fecha_fin_estimada %><br />
-			<%= f.date_select :fecha_fin_estimada, :include_blank => true %>
-		</div>  
-		<div class="field">
-			<%= f.label :link_externo %><br />
-			<%= f.text_field :link_externo %>
-		</div>
-		<div class="field">
-			Responsable DIT<br />
-			<%= f.select :lider_desarrollo, @usuarios %>
-		</div>
-		<div class="field">
-			<%= f.label :dias_estimados %><br />
-			<%= f.number_field :dias_estimados %>
-		</div>
-		<div class="field">
-			<%= f.label :prioridad %><br />
-			<%= f.number_field :prioridad %>
-		</div>
-		<div class="field">
-			<%= f.label :estado %><br/>
-			<%= f.select :estado_id, @estados %>
-		</div>
-	</div>
+		<legend>Requerimiento</legend>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+		<div class="row">
+			<div class="span6">
+				<div class="control-group">
+					<%= f.label :descripcion, :class => 'control-label' %>
+					<div class="controls"><%= f.text_field :descripcion %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label 'Tipo de actividad', :class => 'control-label' %>
+					<div class="controls"><%= f.select :tipo_requerimiento_id, @tipos_requerimientos %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label :aplicacion, :class => 'control-label' %>
+					<div class="controls"><%= f.select :aplicacion_id, @aplicaciones %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label :area, :class => 'control-label' %>
+					<div class="controls"><%= f.select :area_id, @areas %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label :usuario_solicitante, :class => 'control-label' %>
+					<div class="controls"><%= f.select :usuario_solicitante, @usuarios %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label :observaciones, :class => 'control-label' %>
+					<div class="controls"><%= f.text_area :observaciones, :size => '50x6', :class => 'span4' %></div>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="control-group">
+					<%= f.label :fecha_fin_estimada, :class => 'control-label' %>
+					<div class="controls"><%= f.date_select :fecha_fin_estimada, {:include_blank => true}, { :class => 'span1' } %></div>
+				</div>  
+				<div class="control-group">
+					<%= f.label :link_externo, :class => 'control-label' %>
+					<div class="controls"><%= f.text_field :link_externo %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Responsable DIT</label>
+					<div class="controls"><%= f.select :lider_desarrollo, @usuarios %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label :dias_estimados, :class => 'control-label' %>
+					<div class="controls"><%= f.number_field :dias_estimados %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label :prioridad, :class => 'control-label' %>
+					<div class="controls"><%= f.number_field :prioridad %></div>
+				</div>
+				<div class="control-group">
+					<%= f.label :estado, :class => 'control-label' %>
+					<div class="controls"><%= f.select :estado_id, @estados %></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+		  		<div class="form-actions">
+		    		<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
+		    		<%= link_to 'Volver', requerimientos_path, :class => 'btn' %>
+		  		</div>
+			</div>
+		</div>
+  
+	<% end %>
