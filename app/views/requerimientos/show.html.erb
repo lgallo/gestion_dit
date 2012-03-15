@@ -1,50 +1,61 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Numero:</b>
-  <%= @requerimiento.numero %>
-</p>
+	<div class="row">
+		<div class="span12">
+			<p id="notice"><%= notice %></p>
+		</div>
+	</div>
 
-<p>
-  <b>Descripcion:</b>
-  <%= @requerimiento.descripcion %>
-</p>
+	<div class="row">
+		<div class="span6">
+			<p>
+			  <b>Numero:</b>
+			  <%= @requerimiento.numero %>
+			</p>
+			
+			<p>
+			  <b>Descripcion:</b>
+			  <%= @requerimiento.descripcion %>
+			</p>
+			
+			<p>
+			  <b>Tipo:</b>
+			  <%= @requerimiento.tipo_requerimiento.nombre %>
+			</p>
+			
+			<p>
+			  <b>Aplicacion:</b>
+			  <%= @requerimiento.aplicacion.nombre %>
+			</p>
+		</div>
+		<div class="span6">
+			<p>
+			  <b>Usuario solicitante:</b>
+			  <%= @requerimiento.usuario_solicitante %>
+			</p>
+			
+			<p>
+			  <b>Area responsable:</b>
+			  <%= @requerimiento.area.nombre %>
+			</p>
+			
+			<p>
+			  <b>Fecha fin estimada:</b>
+			  <%= @requerimiento.fecha_fin_estimada %>
+			</p>
+			
+			<p>
+			  <b>Responsable DIT:</b>
+			  <%= @requerimiento.lider_desarrollo %>
+			</p>
+			
+			<p>
+			  <b>Dias estimados:</b>
+			  <%= @requerimiento.dias_estimados %>
+			</p>
+		</div>
+	</div>
 
-<p>
-  <b>Tipo:</b>
-  <%= @requerimiento.tipo_requerimiento.nombre %>
-</p>
-
-<p>
-  <b>Aplicacion:</b>
-  <%= @requerimiento.aplicacion.nombre %>
-</p>
-
-<p>
-  <b>Usuario solicitante:</b>
-  <%= @requerimiento.usuario_solicitante %>
-</p>
-
-<p>
-  <b>Area responsable:</b>
-  <%= @requerimiento.area.nombre %>
-</p>
-
-<p>
-  <b>Fecha fin estimada:</b>
-  <%= @requerimiento.fecha_fin_estimada %>
-</p>
-
-<p>
-  <b>Responsable DIT:</b>
-  <%= @requerimiento.lider_desarrollo %>
-</p>
-
-<p>
-  <b>Dias estimados:</b>
-  <%= @requerimiento.dias_estimados %>
-</p>
-
-
-<%= link_to 'Edit', edit_requerimiento_path(@requerimiento) %> |
-<%= link_to 'Back', requerimientos_path %>
+	<div class="form-actions">
+		<%= link_to 'Editar', edit_requerimiento_path(@requerimiento), :class => 'btn' %>
+		<%= link_to 'Volver', requerimientos_path, :class => 'btn' %>
+	</div>
