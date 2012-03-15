@@ -1,27 +1,33 @@
-<h1>Listing usuarios</h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Login</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<div class="page-header">
+		<h1>Listando usuarios</h1>
+	</div>
 
-<% @usuarios.each do |usuario| %>
-  <tr>
-    <td><%= usuario.nombre %></td>
-    <td><%= usuario.apellido %></td>
-    <td><%= usuario.login %></td>
-    <td><%= link_to 'Show', usuario %></td>
-    <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
-    <td><%= link_to 'Destroy', usuario, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+	<table class="table table-bordered table-striped">
+		<thead>
+		  <tr>
+		    <th>Nombre</th>
+		    <th>Apellido</th>
+		    <th>Login</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		</thead>
+		<tbody>
+			<% @usuarios.each do |usuario| %>
+			  <tr>
+			    <td><%= usuario.nombre %></td>
+			    <td><%= usuario.apellido %></td>
+			    <td><%= usuario.login %></td>
+			    <td><%= link_to 'Ver', usuario %></td>
+			    <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
+			    <td><%= link_to 'Destruir', usuario, confirm: '¿Está seguro?', method: :delete %></td>
+			  </tr>
+			<% end %>
+		</tbody>
+	</table>
 
-<br />
-
-<%= link_to 'New Usuario', new_usuario_path %>
+	<div class="form-actions">
+		<%= link_to 'Nuevo usuario', new_usuario_path, :class => 'btn btn-primary' %>
+	</div>

@@ -1,20 +1,36 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Nombre:</b>
-  <%= @usuario.nombre %>
-</p>
+	<div class="row">
+		<div class="span12">
+			<p id="notice"><%= notice %></p>
+		</div>
+	</div>
 
-<p>
-  <b>Apellido:</b>
-  <%= @usuario.apellido %>
-</p>
+	<div class="row">
+		<div class="span6">
+			<p>
+			  <b>Nombre:</b>
+			  <%= @usuario.nombre %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<p>
+			  <b>Apellido:</b>
+			  <%= @usuario.apellido %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<p>
+			  <b>Login:</b>
+			  <%= @usuario.login %>
+			</p>
+		</div>
+	</div>
 
-<p>
-  <b>Login:</b>
-  <%= @usuario.login %>
-</p>
-
-
-<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
-<%= link_to 'Back', usuarios_path %>
+	<div class="form-actions">
+		<%= link_to 'Editar', edit_usuario_path(@usuario), :class => 'btn' %>
+		<%= link_to 'Volver', usuarios_path, :class => 'btn' %>
+	</div>
