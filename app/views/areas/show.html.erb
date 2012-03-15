@@ -1,10 +1,20 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Nombre:</b>
-  <%= @area.nombre %>
-</p>
+	<div class="row">
+		<div class="span12">
+			<p id="notice"><%= notice %></p>
+		</div>
+	</div>
 
+	<div class="row">
+		<div class="span6">
+			<p>
+			  <b>Nombre:</b>
+			  <%= @area.nombre %>
+			</p>
+		</div>
+	</div>
 
-<%= link_to 'Edit', edit_area_path(@area) %> |
-<%= link_to 'Back', areas_path %>
+	<div class="form-actions">
+		<%= link_to 'Editar', edit_area_path(@area), :class => 'btn' %>
+		<%= link_to 'Volver', areas_path, :class => 'btn' %>
+	</div>

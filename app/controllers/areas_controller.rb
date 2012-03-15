@@ -2,7 +2,7 @@ class AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @areas = Area.all
+    @areas = Area.order(:nombre)
 
     respond_to do |format|
       format.html # index.html.erb
