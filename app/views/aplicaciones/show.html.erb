@@ -1,10 +1,20 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Nombre:</b>
-  <%= @aplicacion.nombre %>
-</p>
+	<div class="row">
+		<div class="span12">
+			<p id="notice"><%= notice %></p>
+		</div>
+	</div>
 
+	<div class="row">
+		<div class="span6">
+			<p>
+			  <b>Nombre:</b>
+			  <%= @aplicacion.nombre %>
+			</p>
+		</div>
+	</div>
 
-<%= link_to 'Edit', edit_aplicacion_path(@aplicacion) %> |
-<%= link_to 'Back', aplicaciones_path %>
+	<div class="form-actions">
+		<%= link_to 'Editar', edit_aplicacion_path(@aplicacion), :class => 'btn' %>
+		<%= link_to 'Volver', aplicaciones_path, :class => 'btn' %>
+	</div>

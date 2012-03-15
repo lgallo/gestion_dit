@@ -2,7 +2,7 @@ class AplicacionesController < ApplicationController
   # GET /aplicaciones
   # GET /aplicaciones.json
   def index
-    @aplicaciones = Aplicacion.all
+    @aplicaciones = Aplicacion.order(:nombre)
 
     respond_to do |format|
       format.html # index.html.erb
