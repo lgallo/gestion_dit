@@ -1,15 +1,18 @@
-<h1>Acceso a la aplicaci&oacute;n</h1>
 
-<%= form_for(:session, url: sessions_path) do |f| %>
-	<div class="field">
-		<%= f.label :clave_acceso %><br/>
-		<%= f.password_field :clave_acceso, :id => 'clave_acceso' %>
+	<div class="page-header">
+		<h1>Acceso a la aplicaci&oacute;n</h1>
 	</div>
-	<div class="actions">
-		<%= f.submit "Ingresar" %>
-	</div>
-<% end %>
 
-<script>
-	document.getElementById('clave_acceso').focus();
-</script>
+	<%= form_for(:session, url: sessions_path, :html => { :class => 'form-horizontal' } ) do |f| %>
+		<div class="control-group">
+			<%= f.label :clave_acceso, :class => 'control-label' %>
+			<div class="controls"><%= f.password_field :clave_acceso, :id => 'clave_acceso' %></div>
+		</div>
+		<div class="form-actions">
+			<%= f.submit "Ingresar", :class => 'btn btn-primary' %>
+		</div>
+	<% end %>
+
+	<script>
+		document.getElementById('clave_acceso').focus();
+	</script>
