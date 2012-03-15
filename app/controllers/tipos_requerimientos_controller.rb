@@ -2,7 +2,7 @@ class TiposRequerimientosController < ApplicationController
   # GET /tipos_requerimientos
   # GET /tipos_requerimientos.json
   def index
-    @tipos_requerimientos = TipoRequerimiento.all
+    @tipos_requerimientos = TipoRequerimiento.order(:nombre)
 
     respond_to do |format|
       format.html # index.html.erb

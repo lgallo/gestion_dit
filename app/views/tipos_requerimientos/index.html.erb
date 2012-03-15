@@ -1,23 +1,29 @@
-<h1>Listando los tipos de actividad</h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<div class="page-header">
+		<h1>Listando los tipos de actividad</h1>
+	</div>
 
-<% @tipos_requerimientos.each do |tipo_requerimiento| %>
-  <tr>
-    <td><%= tipo_requerimiento.nombre %></td>
-    <td><%= link_to 'Show', tipo_requerimiento %></td>
-    <td><%= link_to 'Edit', edit_tipo_requerimiento_path(tipo_requerimiento) %></td>
-    <td><%= link_to 'Destroy', tipo_requerimiento, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+		    	<th>Nombre</th>
+		    	<th></th>
+		    	<th></th>
+		    	<th></th>
+		  	</tr>
+		</thead>
+		<tbody>
+			<% @tipos_requerimientos.each do |tipo_requerimiento| %>
+			  <tr>
+			    <td><%= tipo_requerimiento.nombre %></td>
+			    <td><%= link_to 'Ver', tipo_requerimiento %></td>
+			    <td><%= link_to 'Editar', edit_tipo_requerimiento_path(tipo_requerimiento) %></td>
+			    <td><%= link_to 'Destruir', tipo_requerimiento, confirm: '¿Está seguro?', method: :delete %></td>
+			  </tr>
+			<% end %>
+		</tbody>
+	</table>
 
-<br />
-
-<%= link_to 'New Tipo requerimiento', new_tipo_requerimiento_path %>
+	<div class="form-actions">
+		<%= link_to 'Nuevo tipo de actividad', new_tipo_requerimiento_path, :class => 'btn btn-primary' %>
+	</div>
