@@ -1,23 +1,29 @@
-<h1>Listing estados</h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<div class="page-header">
+		<h1>Listando estados</h1>
+	</div>
 
-<% @estados.each do |estado| %>
-  <tr>
-    <td><%= estado.nombre %></td>
-    <td><%= link_to 'Show', estado %></td>
-    <td><%= link_to 'Edit', edit_estado_path(estado) %></td>
-    <td><%= link_to 'Destroy', estado, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+	<table class="table table-bordered table-striped">
+		<thead>
+		  <tr>
+		    <th>Nombre</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		</thead>
+		<tbody>
+			<% @estados.each do |estado| %>
+			  <tr>
+			    <td><%= estado.nombre %></td>
+			    <td><%= link_to 'Ver', estado %></td>
+			    <td><%= link_to 'Editar', edit_estado_path(estado) %></td>
+			    <td><%= link_to 'Destruir', estado, confirm: '¿Está seguro?', method: :delete %></td>
+			  </tr>
+			<% end %>
+		</tbody>
+	</table>
 
-<br />
-
-<%= link_to 'New Estado', new_estado_path %>
+	<div class="form-actions">
+		<%= link_to 'Nuevo estado', new_estado_path, :class => 'btn btn-primary' %>
+	</div>
