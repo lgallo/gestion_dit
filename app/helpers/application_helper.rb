@@ -20,13 +20,12 @@ module ApplicationHelper
     title ||= column.titleize
     css_class = (column == sort_column) ? "current #{sort_direction}" : nil
     direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
+    up_or_down = (column == sort_column && sort_direction == "asc") ? "down" : "up"
     
-    if css_class == "asc"
-      header_class = "headerSortDown"
-    elsif css_class == "desc"
-      header_class = "headerSortUp"
+    if column == sort_column
+      title = raw("#{title}<li class='icon-chevron-#{up_or_down}'></li>")
     end
     
-    content_tag("th", title, :"data-link" => url_for(params.merge(:sort => column, :direction => direction, :page => nil)), :class => "header multiSort #{css_class}")
+    content_tag("th", title, :"data-link" => url_for(params.merge(:sort => column, :direction => direction, :page => nil)), :class => "header multiSort")
   end
 end
