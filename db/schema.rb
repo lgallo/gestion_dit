@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319173115) do
+ActiveRecord::Schema.define(:version => 20120320155838) do
 
   create_table "aplicaciones", :force => true do |t|
     t.string    "nombre"
@@ -73,21 +73,21 @@ ActiveRecord::Schema.define(:version => 20120319173115) do
   add_index "planificaciones_requerimientos", ["requerimiento_id"], :name => "index_planificaciones_requerimientos_on_requerimiento_id"
 
   create_table "requerimientos", :force => true do |t|
-    t.integer   "numero"
-    t.string    "descripcion"
-    t.integer   "tipo_requerimiento_id"
-    t.integer   "aplicacion_id"
-    t.integer   "usuario_solicitante"
-    t.integer   "area_id"
-    t.date      "fecha_fin_estimada"
-    t.integer   "lider_desarrollo"
-    t.integer   "dias_estimados"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "observaciones"
-    t.integer   "estado_id"
-    t.string    "link_externo"
-    t.integer   "prioridad"
+    t.integer  "numero"
+    t.string   "descripcion"
+    t.integer  "tipo_requerimiento_id"
+    t.integer  "aplicacion_id"
+    t.integer  "usuario_solicitante"
+    t.integer  "area_id"
+    t.date     "fecha_fin_estimada"
+    t.integer  "lider_desarrollo"
+    t.integer  "dias_estimados"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "observaciones"
+    t.integer  "estado_id"
+    t.string   "link_externo"
+    t.integer  "prioridad"
   end
 
   add_index "requerimientos", ["aplicacion_id"], :name => "index_requerimientos_on_aplicacion_id"
