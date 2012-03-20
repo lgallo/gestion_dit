@@ -1,2 +1,4 @@
 
 	$('#areas_usuarios').prepend('<%= escape_javascript(render(@area_usuario)) %>');
+	$('#au_<%= @area_usuario.id %>').hide();
+	$('#au_<%= @area_usuario.id %>').show("slow");
