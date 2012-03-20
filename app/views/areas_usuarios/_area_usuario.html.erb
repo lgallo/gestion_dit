@@ -1,0 +1,7 @@
+
+	<tr id="au_<%= area_usuario.id %>">
+		<td><%= area_usuario.usuario.apellido %></td>
+		<td><%= area_usuario.usuario.nombre %></td>
+		<td><%= area_usuario.usuario.login %></td>
+		<td><%= link_to 'Quitar', area_usuario, confirm: '¿Está seguro?', method: :delete, :remote => true %></td>
+	</tr>

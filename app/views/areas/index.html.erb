@@ -7,6 +7,7 @@
 		<thead>
 		  <tr>
 		    <th>Nombre</th>
+		    <th>Miembros</th>
 		    <th></th>
 		    <th></th>
 		    <th></th>
@@ -16,6 +17,7 @@
 			<% @areas.each do |area| %>
 			  <tr>
 			    <td><%= area.nombre %></td>
+			    <td><%= area.texto_miembros %></td>
 			    <td><%= link_to 'Ver', area %></td>
 			    <td><%= link_to 'Editar', edit_area_path(area) %></td>
 			    <td><%= link_to 'Destruir', area, confirm: '¿Está seguro?', method: :delete %></td>

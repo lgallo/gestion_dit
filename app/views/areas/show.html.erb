@@ -1,4 +1,6 @@
 
+	<legend>Información del área</legend>
+	
 	<div class="row">
 		<div class="span12">
 			<p id="notice"><%= notice %></p>
@@ -11,6 +13,30 @@
 			  <b>Nombre:</b>
 			  <%= @area.nombre %>
 			</p>
+		</div>
+	</div>
+
+	<br />
+
+	<legend>Usuarios del área</legend>
+
+	<div class="row">
+		<div class="span6">
+			<%= form_tag("/areas_usuarios", :method => 'post', :class => 'form-horizontal', :remote => true) do %>
+				<input type="hidden" name="area_usuario[area_id]" value="<%= @area.id %>"/>
+				<select name="area_usuario[usuario_id]">
+					<% @usuarios.each do |u| %>
+						<option value="<%= u.id %>"><%= u.apellido %>, <%= u.nombre %></option>
+					<% end %>
+				</select>
+				<input type="submit" value="Agregar al área" class="btn btn-primary" />
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span6">
+			<%= render  :template => 'areas_usuarios/index', :locals => {:areas_usuarios => @area.areas_usuarios} %>			
 		</div>
 	</div>
 

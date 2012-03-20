@@ -10,10 +10,30 @@ class AreasController < ApplicationController
     end
   end
 
+  def remove_usuario
+    area = Area.find(params[:id])
+    usuario = Usuario.find(params[:usuario_id])
+
+    redirect_to area_path(area)    
+  end
+
+  def add_usuario
+    area = Area.find(params[:id])
+    usuario = Usuario.find(params[:usuario_id])
+    
+    area_usuario = AreaUsuario.new
+    area_usuario.area = area
+    area_usuario.usuario = usuario
+    area_usuario.save!
+    
+    redirect_to area_path(area)
+  end
+
   # GET /areas/1
   # GET /areas/1.json
   def show
     @area = Area.find(params[:id])
+    @usuarios = Usuario.all
 
     respond_to do |format|
       format.html # show.html.erb
