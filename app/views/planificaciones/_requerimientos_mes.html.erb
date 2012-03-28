@@ -28,7 +28,7 @@
 							<td><%= p.requerimiento.tipo_requerimiento.nombre %></td>
 							<td><%= p.requerimiento.aplicacion.nombre %></td>
 							<td><%= p.requerimiento.area.nombre %></td>
-							<td><%= p.requerimiento.dias_estimados(@planificacion.area) %></td>
+							<td><%= link_to p.requerimiento.dias_estimados(@planificacion.area), requerimiento_path(p.requerimiento) %></td>
 							<td><%= p.dedicacion_previa %></td>
 							<td><%= p.dedicacion_restante(@planificacion.area) %></td>
 							<td><%= best_in_place p, :dedicacion_mes, :html_attrs => { :size => '1' } %></td>
