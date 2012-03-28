@@ -2,7 +2,7 @@
 #
 # Table name: requerimientos
 #
-#  id                    :integer         primary key
+#  id                    :integer         not null, primary key
 #  numero                :integer
 #  descripcion           :string(255)
 #  tipo_requerimiento_id :integer
@@ -11,9 +11,8 @@
 #  area_id               :integer
 #  fecha_fin_estimada    :date
 #  lider_desarrollo      :integer
-#  dias_estimados        :integer
-#  created_at            :timestamp
-#  updated_at            :timestamp
+#  created_at            :datetime
+#  updated_at            :datetime
 #  observaciones         :text
 #  estado_id             :integer
 #  link_externo          :string(255)
@@ -29,6 +28,23 @@ class Requerimiento < ActiveRecord::Base
   belongs_to :estado
   
   has_many :requerimientos_areas, :class_name => 'RequerimientoArea'
+
+  def dias_estimados(area)
+    req_area = RequerimientoArea.where(:area_id => area.id).first
+    req_area.nil? ? 0: req_area.estimacion    
+  end
+  
+  def dias_estimados_totales
+    estimacion = 0
+    
+    unless requerimientos_areas.nil?
+      requerimientos_areas.each do |ra|
+        estimacion += ra.estimacion
+      end
+    end
+    
+    estimacion
+  end
 
   def nombre_combo
     app = self.aplicacion.nombre[0, 5]

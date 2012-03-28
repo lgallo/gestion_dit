@@ -16,14 +16,16 @@ class PlanificacionRequerimiento < ActiveRecord::Base
   
   def dedicacion_previa
     dias_previos = 0
-    otros = PlanificacionRequerimiento.find(:all, :conditions => { :requerimiento_id => self.requerimiento_id } )
+    otros = PlanificacionRequerimiento.joins(:planificacion).where(" requerimiento_id = #{self.requerimiento_id} and planificaciones.area_id = #{planificacion.area_id} ")
+    #.find(:all, :conditions => { :requerimiento_id =>  } )
+    
     otros.each do |pr|
       dias_previos += pr.dedicacion_mes if pr.planificacion.previa? self.planificacion
     end
     dias_previos
   end
   
-  def dedicacion_restante
-    self.requerimiento.dias_estimados - self.dedicacion_previa
+  def dedicacion_restante(area)
+    self.requerimiento.dias_estimados(area) - self.dedicacion_previa
   end
 end

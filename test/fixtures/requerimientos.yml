@@ -2,7 +2,7 @@
 #
 # Table name: requerimientos
 #
-#  id                    :integer         primary key
+#  id                    :integer         not null, primary key
 #  numero                :integer
 #  descripcion           :string(255)
 #  tipo_requerimiento_id :integer
@@ -11,9 +11,8 @@
 #  area_id               :integer
 #  fecha_fin_estimada    :date
 #  lider_desarrollo      :integer
-#  dias_estimados        :integer
-#  created_at            :timestamp
-#  updated_at            :timestamp
+#  created_at            :datetime
+#  updated_at            :datetime
 #  observaciones         :text
 #  estado_id             :integer
 #  link_externo          :string(255)
