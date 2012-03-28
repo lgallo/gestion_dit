@@ -41,6 +41,14 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<%= javascript_include_tag "bootstrap" %>
 		<%= javascript_include_tag "application" %>
+		
+		<script>
+			$(document).ready(function() 
+			{
+  				/* Activating Best In Place */
+  				jQuery(".best_in_place").best_in_place();
+			});
+		</script>
 	</body>
 	
 </html>
