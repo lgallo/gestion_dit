@@ -1,0 +1,29 @@
+<%= form_for(@requerimiento_area) do |f| %>
+  <% if @requerimiento_area.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@requerimiento_area.errors.count, "error") %> prohibited this requerimiento_area from being saved:</h2>
+
+      <ul>
+      <% @requerimiento_area.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :area %><br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <%= f.label :requerimiento %><br />
+    <%= f.text_field :requerimiento %>
+  </div>
+  <div class="field">
+    <%= f.label :estimacion %><br />
+    <%= f.text_field :estimacion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

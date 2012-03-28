@@ -14,7 +14,7 @@
 #  dias_estimados        :integer
 #  created_at            :timestamp
 #  updated_at            :timestamp
-#  observaciones         :string(255)
+#  observaciones         :text
 #  estado_id             :integer
 #  link_externo          :string(255)
 #  prioridad             :integer
@@ -27,6 +27,8 @@ class Requerimiento < ActiveRecord::Base
   belongs_to :area
   belongs_to :usuario, :foreign_key => "lider_desarrollo"
   belongs_to :estado
+  
+  has_many :requerimientos_areas, :class_name => 'RequerimientoArea'
 
   def nombre_combo
     app = self.aplicacion.nombre[0, 5]

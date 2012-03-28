@@ -1,0 +1,7 @@
+
+	$('#requerimientos_areas').prepend('<%= escape_javascript(render(@requerimiento_area)) %>');
+	$('#ra_<%= @requerimiento_area.id %>').hide();	
+	$('#ra_<%= @requerimiento_area.id %>').show("slow");
+	
+	// Hacer funcionar el best_in_place en la tablita apenas se agregan.
+	$('.best_in_place').best_in_place();

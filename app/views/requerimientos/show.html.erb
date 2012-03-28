@@ -1,4 +1,6 @@
 
+	<legend><%= @requerimiento.tipo_requerimiento.nombre.capitalize %> <%=  "\##{@requerimiento.numero}" if @requerimiento.persisted? %></legend>
+	
 	<div class="row">
 		<div class="span12">
 			<p id="notice"><%= notice %></p>
@@ -8,50 +10,58 @@
 	<div class="row">
 		<div class="span6">
 			<p>
-			  <b>Numero:</b>
-			  <%= @requerimiento.numero %>
-			</p>
-			
-			<p>
 			  <b>Descripcion:</b>
 			  <%= @requerimiento.descripcion %>
-			</p>
-			
-			<p>
-			  <b>Tipo:</b>
-			  <%= @requerimiento.tipo_requerimiento.nombre %>
 			</p>
 			
 			<p>
 			  <b>Aplicacion:</b>
 			  <%= @requerimiento.aplicacion.nombre %>
 			</p>
-		</div>
-		<div class="span6">
 			<p>
 			  <b>Usuario solicitante:</b>
-			  <%= @requerimiento.usuario_solicitante %>
+			  <%= @requerimiento.solicitante.login %>
 			</p>
 			
+			
+		</div>
+		<div class="span6">
 			<p>
 			  <b>Area responsable:</b>
 			  <%= @requerimiento.area.nombre %>
 			</p>
-			
 			<p>
 			  <b>Fecha fin estimada:</b>
-			  <%= @requerimiento.fecha_fin_estimada %>
+			  <%= pretty_date(@requerimiento.fecha_fin_estimada) %>
 			</p>
 			
 			<p>
 			  <b>Responsable DIT:</b>
-			  <%= @requerimiento.lider_desarrollo %>
+			  <%= @requerimiento.lider.login %>
 			</p>
-			
-			<p>
-			  <b>Dias estimados:</b>
-			  <%= @requerimiento.dias_estimados %>
-			</p>
+		</div>
+	</div>
+	
+	<br/>
+	<legend>Estimaciones de &aacute;reas involucradas en el requerimiento</legend>
+
+	<div class="row">
+		<div class="span6">
+			<%= form_tag("/requerimientos_areas", :method => 'post', :class => 'form-horizontal', :remote => true) do %>
+				<input type="hidden" name="requerimiento_area[requerimiento_id]" value="<%= @requerimiento.id %>"/>
+				<select name="requerimiento_area[area_id]">
+					<% @areas.each do |a| %>
+						<option value="<%= a.id %>"><%= a.nombre %></option>
+					<% end %>
+				</select>
+				<input type="submit" value="Agregar" class="btn btn-primary" />
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span6">
+			<%= render  :template => 'requerimientos_areas/index', :locals => {:requerimientos_areas => @requerimiento.requerimientos_areas} %>			
 		</div>
 	</div>
 

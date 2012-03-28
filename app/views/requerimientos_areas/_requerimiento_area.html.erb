@@ -1,0 +1,6 @@
+
+	<tr id="ra_<%= requerimiento_area.id %>">
+		<td><%= requerimiento_area.area.nombre %></td>
+		<td><%= best_in_place requerimiento_area, :estimacion, :html_attrs => { :class => 'input-mini' } %></td>
+		<td><%= link_to 'Quitar', requerimiento_area, confirm: '¿Está seguro?', method: :delete, :remote => true %></td>
+	</tr>

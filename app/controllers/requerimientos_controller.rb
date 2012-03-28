@@ -26,6 +26,7 @@ class RequerimientosController < ApplicationController
   # GET /requerimientos/1.json
   def show
     @requerimiento = Requerimiento.find(params[:id])
+    @areas = Area.where(" nombre like '%DIT%' ")
 
     respond_to do |format|
       format.html # show.html.erb

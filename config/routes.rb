@@ -1,4 +1,6 @@
 GestionDit::Application.routes.draw do
+  resources :requerimientos_areas
+
   resources :areas_usuarios
 
   resources :estados

@@ -14,7 +14,7 @@
 #  dias_estimados        :integer
 #  created_at            :timestamp
 #  updated_at            :timestamp
-#  observaciones         :string(255)
+#  observaciones         :text
 #  estado_id             :integer
 #  link_externo          :string(255)
 #  prioridad             :integer

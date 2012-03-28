@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Area:</b>
+  <%= @requerimiento_area.area %>
+</p>
+
+<p>
+  <b>Requerimiento:</b>
+  <%= @requerimiento_area.requerimiento %>
+</p>
+
+<p>
+  <b>Estimacion:</b>
+  <%= @requerimiento_area.estimacion %>
+</p>
+
+
+<%= link_to 'Edit', edit_requerimiento_area_path(@requerimiento_area) %> |
+<%= link_to 'Back', requerimientos_areas_path %>

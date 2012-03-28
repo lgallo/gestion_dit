@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: requerimientos_areas
+#
+#  id               :integer         not null, primary key
+#  area_id          :integer
+#  requerimiento_id :integer
+#  estimacion       :decimal(, )
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  area: 
+  requerimiento: 
+  estimacion: 
+
+two:
+  area: 
+  requerimiento: 
+  estimacion: 
