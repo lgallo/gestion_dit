@@ -46,6 +46,10 @@
 					<div class="controls"><%= f.date_select :fecha_fin_estimada, {:include_blank => true}, { :class => 'span1' } %></div>
 				</div>  
 				<div class="control-group">
+					<%= f.label :fecha_implementacion, :class => 'control-label' %>
+					<div class="controls"><%= f.date_select :fecha_implementacion, {:include_blank => true}, {:class => 'span1'}%></div>
+				</div>
+				<div class="control-group">
 					<%= f.label :link_externo, :class => 'control-label' %>
 					<div class="controls"><%= f.text_field :link_externo %></div>
 				</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328143756) do
+ActiveRecord::Schema.define(:version => 20120418124436) do
 
   create_table "aplicaciones", :force => true do |t|
     t.string    "nombre"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20120328143756) do
     t.integer  "estado_id"
     t.string   "link_externo"
     t.integer  "prioridad"
+    t.date     "fecha_implementacion"
   end
 
   add_index "requerimientos", ["aplicacion_id"], :name => "index_requerimientos_on_aplicacion_id"

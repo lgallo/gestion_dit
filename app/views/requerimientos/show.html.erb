@@ -22,7 +22,10 @@
 			  <b>Usuario solicitante:</b>
 			  <%= @requerimiento.solicitante.login %>
 			</p>
-			
+			<p>
+			  <b>Responsable DIT:</b>
+			  <%= @requerimiento.lider.login %>
+			</p>
 			
 		</div>
 		<div class="span6">
@@ -34,11 +37,11 @@
 			  <b>Fecha fin estimada:</b>
 			  <%= pretty_date(@requerimiento.fecha_fin_estimada) %>
 			</p>
-			
 			<p>
-			  <b>Responsable DIT:</b>
-			  <%= @requerimiento.lider.login %>
+				<b>Fecha de implementaci&oacute;n</b>
+				<%= pretty_date(@requerimiento.fecha_implementacion) %>
 			</p>
+			
 		</div>
 	</div>
 	
