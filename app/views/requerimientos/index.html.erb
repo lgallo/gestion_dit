@@ -70,7 +70,7 @@
 				    <td><%= r.dias_estimados_totales %></td>
 				    <td><%= r.estado.nombre unless r.estado.nil? %></td>
 				    <td><%= r.prioridad %></td>
-				    <td><%= link_to 'Ver', requerimiento_path(r) %></td>
+				    <td><%= link_to 'Ver', "#{requerimientos_path}/#{r.numero}" %></td>
 				    <td><%= link_to 'Editar', edit_requerimiento_path(r) %></td>
 				    <td><%= link_to 'Borrar', r, confirm: '¿Está seguro?', method: :delete %></td>
 				  </tr>
