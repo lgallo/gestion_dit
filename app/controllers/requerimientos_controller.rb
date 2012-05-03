@@ -5,9 +5,9 @@ class RequerimientosController < ApplicationController
   # GET /requerimientos
   # GET /requerimientos.json
   def index
-    @estado_id = params[:estado_id]
+    @estado_id = params[:estado_id] || Estado.where("nombre <> 'Finalizado'").first.id
     
-    if @estado_id.nil? or @estado_id.empty?
+    if @estado_id.nil? or @estado_id == ""
       @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction)
     else
       @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction).where(:estado_id => @estado_id)
