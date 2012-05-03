@@ -25,7 +25,7 @@ class RequerimientosController < ApplicationController
   # GET /requerimientos/1
   # GET /requerimientos/1.json
   def show
-    @requerimiento = Requerimiento.where(:numero => params[:id]).first
+    @requerimiento ||= Requerimiento.where(:numero => params[:id]).first
     @areas = Area.where(" nombre like '%DIT%' ")
 
     respond_to do |format|
@@ -54,12 +54,11 @@ class RequerimientosController < ApplicationController
   # POST /requerimientos.json
   def create
     @requerimiento = Requerimiento.new(params[:requerimiento])
-
     @requerimiento.numero = Requerimiento.maximum(:numero) + 1
-
+    
     respond_to do |format|
       if @requerimiento.save
-        format.html { redirect_to @requerimiento, notice: 'Requerimiento was successfully created.' }
+        format.html { redirect_to "#{requerimientos_path}/#{@requerimiento.numero}", notice: 'Requerimiento was successfully created.' }
         format.json { render json: @requerimiento, status: :created, location: @requerimiento }
       else
         format.html { render action: "new" }
