@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418124436) do
+ActiveRecord::Schema.define(:version => 20120507132837) do
 
   create_table "aplicaciones", :force => true do |t|
     t.string    "nombre"
@@ -73,21 +73,21 @@ ActiveRecord::Schema.define(:version => 20120418124436) do
   add_index "planificaciones_requerimientos", ["requerimiento_id"], :name => "index_planificaciones_requerimientos_on_requerimiento_id"
 
   create_table "requerimientos", :force => true do |t|
-    t.integer  "numero"
-    t.string   "descripcion"
-    t.integer  "tipo_requerimiento_id"
-    t.integer  "aplicacion_id"
-    t.integer  "usuario_solicitante"
-    t.integer  "area_id"
-    t.date     "fecha_fin_estimada"
-    t.integer  "lider_desarrollo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "observaciones"
-    t.integer  "estado_id"
-    t.string   "link_externo"
-    t.integer  "prioridad"
-    t.date     "fecha_implementacion"
+    t.integer   "numero"
+    t.string    "descripcion"
+    t.integer   "tipo_requerimiento_id"
+    t.integer   "aplicacion_id"
+    t.integer   "usuario_solicitante"
+    t.integer   "area_id"
+    t.date      "fecha_fin_estimada"
+    t.integer   "lider_desarrollo"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.text      "observaciones"
+    t.integer   "estado_id"
+    t.string    "link_externo"
+    t.integer   "prioridad"
+    t.date      "fecha_implementacion"
   end
 
   add_index "requerimientos", ["aplicacion_id"], :name => "index_requerimientos_on_aplicacion_id"
@@ -98,11 +98,11 @@ ActiveRecord::Schema.define(:version => 20120418124436) do
   add_index "requerimientos", ["usuario_solicitante"], :name => "index_requerimientos_on_usuario_solicitante"
 
   create_table "requerimientos_areas", :force => true do |t|
-    t.integer  "area_id"
-    t.integer  "requerimiento_id"
-    t.decimal  "estimacion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "area_id"
+    t.integer   "requerimiento_id"
+    t.decimal   "estimacion"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "requerimientos_areas", ["area_id"], :name => "index_requerimientos_areas_on_area_id"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20120418124436) do
     t.string    "login"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.boolean   "carga_planificacion"
   end
 
 end

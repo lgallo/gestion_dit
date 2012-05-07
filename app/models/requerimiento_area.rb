@@ -2,12 +2,12 @@
 #
 # Table name: requerimientos_areas
 #
-#  id               :integer         not null, primary key
+#  id               :integer         primary key
 #  area_id          :integer
 #  requerimiento_id :integer
 #  estimacion       :decimal(, )
-#  created_at       :datetime
-#  updated_at       :datetime
+#  created_at       :timestamp
+#  updated_at       :timestamp
 #
 
 class RequerimientoArea < ActiveRecord::Base

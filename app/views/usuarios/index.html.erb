@@ -9,9 +9,8 @@
 		    <th>Nombre</th>
 		    <th>Apellido</th>
 		    <th>Login</th>
-		    <th></th>
-		    <th></th>
-		    <th></th>
+		    <th>&nbsp;</th>
+		    <th colspan="3"></th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -20,6 +19,7 @@
 			    <td><%= usuario.nombre %></td>
 			    <td><%= usuario.apellido %></td>
 			    <td><%= usuario.login %></td>
+			    <td><%= "carga planificación" if usuario.carga_planificacion %></td>
 			    <td><%= link_to 'Ver', usuario %></td>
 			    <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
 			    <td><%= link_to 'Destruir', usuario, confirm: '¿Está seguro?', method: :delete %></td>

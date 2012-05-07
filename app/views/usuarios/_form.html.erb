@@ -23,6 +23,10 @@
     		<%= f.label :login, :class => 'control-label' %>
     		<div class="controls"><%= f.text_field :login %></div>
   		</div>
+  		<div class="control-group">
+  			<%= f.label :carga_planificacion, :class => 'control-label' %>
+  			<div class="controls"><%= f.check_box :carga_planificacion %></div>
+  		</div>
   		<div class="form-actions">
     		<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
     		<%= link_to 'Volver', usuarios_path, :class => 'btn' %>

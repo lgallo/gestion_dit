@@ -1,7 +1,7 @@
 
 	<div class="row">
 		<div class="span12">
-			<p id="notice"><%= notice %></p>
+			<span class="label label-info"><%= notice %></span>
 		</div>
 	</div>
 
@@ -26,6 +26,13 @@
 			<p>
 			  <b>Login:</b>
 			  <%= @usuario.login %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<p>
+				<b><%= "No " unless @usuario.carga_planificacion %> carga planificaci&oacute;n</b>				
 			</p>
 		</div>
 	</div>

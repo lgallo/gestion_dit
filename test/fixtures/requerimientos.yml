@@ -2,7 +2,7 @@
 #
 # Table name: requerimientos
 #
-#  id                    :integer         not null, primary key
+#  id                    :integer         primary key
 #  numero                :integer
 #  descripcion           :string(255)
 #  tipo_requerimiento_id :integer
@@ -11,12 +11,13 @@
 #  area_id               :integer
 #  fecha_fin_estimada    :date
 #  lider_desarrollo      :integer
-#  created_at            :datetime
-#  updated_at            :datetime
+#  created_at            :timestamp
+#  updated_at            :timestamp
 #  observaciones         :text
 #  estado_id             :integer
 #  link_externo          :string(255)
 #  prioridad             :integer
+#  fecha_implementacion  :date
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
