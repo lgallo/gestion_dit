@@ -32,7 +32,7 @@
 	<div class="row">
 		<div class="span6">
 			<p>
-				<b><%= "No " unless @usuario.carga_planificacion %> carga planificaci&oacute;n</b>				
+				<b><%= (((not @usuario.carga_planificacion.nil? and @usuario.carga_planificacion)? "": "no") + " carga planificación").strip.capitalize %></b>				
 			</p>
 		</div>
 	</div>
