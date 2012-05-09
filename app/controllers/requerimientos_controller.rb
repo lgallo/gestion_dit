@@ -74,7 +74,7 @@ class RequerimientosController < ApplicationController
 
     respond_to do |format|
       if @requerimiento.update_attributes(params[:requerimiento])
-        format.html { redirect_to @requerimiento, notice: 'Requerimiento was successfully updated.' }
+        format.html { redirect_to "#{requerimientos_path}/#{@requerimiento.numero}", notice: 'Requerimiento was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
