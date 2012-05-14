@@ -13,4 +13,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'planificacion_requerimiento', 'planificaciones_requerimientos'
   inflect.irregular 'area_usuario', 'areas_usuarios'
   inflect.irregular 'requerimiento_area', 'requerimientos_areas'
+  inflect.irregular 'planificacion_semanal', 'planificaciones_semanales'
 end

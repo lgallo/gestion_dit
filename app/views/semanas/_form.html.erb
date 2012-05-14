@@ -1,0 +1,25 @@
+<%= form_for(@semana) do |f| %>
+  <% if @semana.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@semana.errors.count, "error") %> prohibited this semana from being saved:</h2>
+
+      <ul>
+      <% @semana.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :desde %><br />
+    <%= f.date_select :desde %>
+  </div>
+  <div class="field">
+    <%= f.label :hasta %><br />
+    <%= f.date_select :hasta %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

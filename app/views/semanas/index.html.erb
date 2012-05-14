@@ -1,0 +1,25 @@
+<h1>Listing semanas</h1>
+
+<table>
+  <tr>
+    <th>Desde</th>
+    <th>Hasta</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @semanas.each do |semana| %>
+  <tr>
+    <td><%= semana.desde %></td>
+    <td><%= semana.hasta %></td>
+    <td><%= link_to 'Show', semana %></td>
+    <td><%= link_to 'Edit', edit_semana_path(semana) %></td>
+    <td><%= link_to 'Destroy', semana, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Semana', new_semana_path %>

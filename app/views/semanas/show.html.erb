@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Desde:</b>
+  <%= @semana.desde %>
+</p>
+
+<p>
+  <b>Hasta:</b>
+  <%= @semana.hasta %>
+</p>
+
+
+<%= link_to 'Edit', edit_semana_path(@semana) %> |
+<%= link_to 'Back', semanas_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @planificacion_semanal.usuario %>
+</p>
+
+<p>
+  <b>Semana:</b>
+  <%= @planificacion_semanal.semana %>
+</p>
+
+<p>
+  <b>Tareas planificadas:</b>
+  <%= @planificacion_semanal.tareas_planificadas %>
+</p>
+
+<p>
+  <b>Tareas realizadas:</b>
+  <%= @planificacion_semanal.tareas_realizadas %>
+</p>
+
+
+<%= link_to 'Edit', edit_planificacion_semanal_path(@planificacion_semanal) %> |
+<%= link_to 'Back', planificaciones_semanales_path %>

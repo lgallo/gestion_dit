@@ -1,0 +1,21 @@
+
+	<legend>Listado de planificaciones semanales</legend>
+
+	<% @semanas.each do |s| %>
+		<h3>Semana del <%= pretty_date(s.desde) %> al <%= pretty_date(s.hasta) %></h3>
+		
+		<ul>
+			<% @usuarios.each do |u| 
+				plan_semanal = PlanificacionSemanal.where(:usuario_id => u.id, :semana_id => s.id).first
+				
+				unless plan_semanal.nil? %>
+					<li><%= link_to "#{u.nombre} #{u.apellido}", planificacion_semanal_path(plan_semanal) %></li>
+				<% else %>
+					<li>
+						<%= u.nombre %>&nbsp;<%= u.apellido %> sin planificaci&oacute;n - 
+						<%= link_to 'Crear', "#{new_planificacion_semanal_path}/#{u.id}/#{s.id}" %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	<% end %>

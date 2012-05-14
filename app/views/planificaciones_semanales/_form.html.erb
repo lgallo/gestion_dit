@@ -1,0 +1,33 @@
+<%= form_for(@planificacion_semanal) do |f| %>
+  <% if @planificacion_semanal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@planificacion_semanal.errors.count, "error") %> prohibited this planificacion_semanal from being saved:</h2>
+
+      <ul>
+      <% @planificacion_semanal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :usuario %><br />
+    <%= f.text_field :usuario %>
+  </div>
+  <div class="field">
+    <%= f.label :semana %><br />
+    <%= f.text_field :semana %>
+  </div>
+  <div class="field">
+    <%= f.label :tareas_planificadas %><br />
+    <%= f.text_area :tareas_planificadas %>
+  </div>
+  <div class="field">
+    <%= f.label :tareas_realizadas %><br />
+    <%= f.text_area :tareas_realizadas %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,11 @@
 GestionDit::Application.routes.draw do
+  
+  match "/planificaciones_semanales/new/:usuario_id/:semana_id", :to => 'planificaciones_semanales#new'
+  
+  resources :planificaciones_semanales
+
+  resources :semanas
+
   resources :requerimientos_areas
 
   resources :areas_usuarios

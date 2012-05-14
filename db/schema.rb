@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507132837) do
+ActiveRecord::Schema.define(:version => 20120514173145) do
 
   create_table "aplicaciones", :force => true do |t|
     t.string    "nombre"
@@ -72,6 +72,18 @@ ActiveRecord::Schema.define(:version => 20120507132837) do
   add_index "planificaciones_requerimientos", ["planificacion_id"], :name => "index_planificaciones_requerimientos_on_planificacion_id"
   add_index "planificaciones_requerimientos", ["requerimiento_id"], :name => "index_planificaciones_requerimientos_on_requerimiento_id"
 
+  create_table "planificaciones_semanales", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "semana_id"
+    t.text     "tareas_planificadas"
+    t.text     "tareas_realizadas"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "planificaciones_semanales", ["semana_id"], :name => "index_planificaciones_semanales_on_semana_id"
+  add_index "planificaciones_semanales", ["usuario_id"], :name => "index_planificaciones_semanales_on_usuario_id"
+
   create_table "requerimientos", :force => true do |t|
     t.integer   "numero"
     t.string    "descripcion"
@@ -107,6 +119,13 @@ ActiveRecord::Schema.define(:version => 20120507132837) do
 
   add_index "requerimientos_areas", ["area_id"], :name => "index_requerimientos_areas_on_area_id"
   add_index "requerimientos_areas", ["requerimiento_id"], :name => "index_requerimientos_areas_on_requerimiento_id"
+
+  create_table "semanas", :force => true do |t|
+    t.date     "desde"
+    t.date     "hasta"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tipos_requerimientos", :force => true do |t|
     t.string    "nombre"

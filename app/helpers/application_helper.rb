@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def li_menu(controller, texto)
+    raw "<li #{'class="active"' if controller==params[:controller]}>#{link_to texto, :controller => controller, :action => 'index' }</li>"
+  end
+  
   def shorten(text, length)
     text[0, length].concat(' (...)') unless text.nil? or text.empty? or text.length <= length
   end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  desde: 2012-05-14
+  hasta: 2012-05-14
+
+two:
+  desde: 2012-05-14
+  hasta: 2012-05-14

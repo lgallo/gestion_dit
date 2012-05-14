@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  usuario: 
+  semana: 
+  tareas_planificadas: MyText
+  tareas_realizadas: MyText
+
+two:
+  usuario: 
+  semana: 
+  tareas_planificadas: MyText
+  tareas_realizadas: MyText
