@@ -50,7 +50,7 @@ class PlanificacionesSemanalesController < ApplicationController
 
     respond_to do |format|
       if @planificacion_semanal.save
-        format.html { redirect_to @planificacion_semanal, notice: 'Planificacion semanal was successfully created.' }
+        format.html { redirect_to planificaciones_semanales_path, notice: 'Planificacion semanal was successfully created.' }
         format.json { render json: @planificacion_semanal, status: :created, location: @planificacion_semanal }
       else
         format.html { render action: "new" }
@@ -66,7 +66,7 @@ class PlanificacionesSemanalesController < ApplicationController
 
     respond_to do |format|
       if @planificacion_semanal.update_attributes(params[:planificacion_semanal])
-        format.html { redirect_to @planificacion_semanal, notice: 'Planificacion semanal was successfully updated.' }
+        format.html { redirect_to planificaciones_semanales_pat, notice: 'Planificacion semanal was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

@@ -1,33 +1,47 @@
-<%= form_for(@planificacion_semanal) do |f| %>
-  <% if @planificacion_semanal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@planificacion_semanal.errors.count, "error") %> prohibited this planificacion_semanal from being saved:</h2>
 
-      <ul>
-      <% @planificacion_semanal.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<%= form_for(@planificacion_semanal, :html => { :class => 'form-horizontal' } ) do |f| %>
+	  <% if @planificacion_semanal.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@planificacion_semanal.errors.count, "error") %> prohibited this planificacion_semanal from being saved:</h2>
+	
+	      <ul>
+	      <% @planificacion_semanal.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 
-  <div class="field">
-    <%= f.label :usuario %><br />
-    <%= f.text_field :usuario %>
-  </div>
-  <div class="field">
-    <%= f.label :semana %><br />
-    <%= f.text_field :semana %>
-  </div>
-  <div class="field">
-    <%= f.label :tareas_planificadas %><br />
-    <%= f.text_area :tareas_planificadas %>
-  </div>
-  <div class="field">
-    <%= f.label :tareas_realizadas %><br />
-    <%= f.text_area :tareas_realizadas %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+		<div class="control-group">
+    		<%= f.label :usuario, :class => 'control-label' %>
+    		<div class="controls">
+    			<%= f.hidden_field :usuario_id %>
+    			<input type="text" readonly="true" value="<%= @planificacion_semanal.usuario.nombre %>&nbsp;<%= @planificacion_semanal.usuario.apellido %>" />
+    		</div>
+  		</div>
+		<div class="control-group">
+    		<%= f.label :semana, :class => 'control-label' %>
+    		<div class="controls">
+    			<%= f.hidden_field :semana_id %>
+    			<input type="text" readonly="true" value="Semana del <%= pretty_date(@planificacion_semanal.semana.desde) %> al <%= pretty_date(@planificacion_semanal.semana.hasta) %>" />
+    		</div>
+		</div>
+		<div class="row">
+			<div class="span6">
+				<div class="control-group">
+		    		<%= f.label :tareas_planificadas, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_area :tareas_planificadas, :rows => '15', :class => 'span4' %></div>
+		  		</div>
+			</div>
+			<div class="span6">
+		  		<div class="control-group">
+		    		<%= f.label :tareas_realizadas, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_area :tareas_realizadas, :rows => '15', :class => 'span4' %></div>
+		  		</div>
+			</div>
+		</div>
+  		
+  		<div class="form-actions">
+    		<%= f.submit 'Grabar', :class => 'btn btn-primary'%>
+  		</div>
+	<% end %>

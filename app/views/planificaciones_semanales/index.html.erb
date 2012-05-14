@@ -9,7 +9,7 @@
 				plan_semanal = PlanificacionSemanal.where(:usuario_id => u.id, :semana_id => s.id).first
 				
 				unless plan_semanal.nil? %>
-					<li><%= link_to "#{u.nombre} #{u.apellido}", planificacion_semanal_path(plan_semanal) %></li>
+					<li><%= link_to "#{u.nombre} #{u.apellido}", edit_planificacion_semanal_path(plan_semanal) %></li>
 				<% else %>
 					<li>
 						<%= u.nombre %>&nbsp;<%= u.apellido %> sin planificaci&oacute;n - 
