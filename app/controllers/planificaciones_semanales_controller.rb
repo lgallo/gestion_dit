@@ -4,7 +4,29 @@ class PlanificacionesSemanalesController < ApplicationController
   # GET /planificaciones_semanales
   # GET /planificaciones_semanales.json
   def index
-    @semanas = Semana.all
+    # Si se filtró, lo que pidieron, si no lo que está
+    # en la sesión, y si no este mes.
+    unless params[:periodo].nil?
+      session[:periodo_ps] = params[:periodo]
+    else
+      session[:periodo_ps] ||= 'este_mes'
+    end
+
+    case session[:periodo_ps]
+      when 'este_mes'
+        desde = Date.today.at_beginning_of_month
+        hasta = Date.today.at_end_of_month
+          
+        @semanas = Semana.where(" hasta > :desde and desde < :hasta ", :desde => desde, :hasta => hasta)
+      when 'este_y_prox'
+        desde = Date.today.at_beginning_of_month
+        hasta = Date.today.next_month.at_end_of_month
+        
+        @semanas = Semana.where(" hasta > :desde and desde < :hasta ", :desde => desde, :hasta => hasta)
+      when 'todos'        
+        @semanas = Semana.all
+    end
+     
     @usuarios = Usuario.where(:carga_planificacion => true)
     
     @planificaciones_semanales = PlanificacionSemanal.all

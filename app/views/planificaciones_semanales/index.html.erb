@@ -1,5 +1,14 @@
 
-	<legend>Listado de planificaciones semanales</legend>
+	<form id="filtro">
+		<legend>
+			Listado de planificaciones semanales de 
+			<select name="periodo" onchange="javascript: document.getElementById('filtro').submit();">
+				<option value="este_mes" <%= "selected" if session[:periodo_ps] == 'este_mes' %>>este mes</option>
+				<option value="este_y_prox" <%= "selected" if session[:periodo_ps] == 'este_y_prox'%>>este mes y el próximo</option>
+				<option value="todos" <%= "selected" if session[:periodo_ps] == 'todos' %>>todos los meses</option>
+			</select>
+		</legend>
+	</form>
 
 	<% @semanas.each do |s| %>
 		<h3>Semana del <%= pretty_date(s.desde) %> al <%= pretty_date(s.hasta) %></h3>
