@@ -1,4 +1,6 @@
 class PlanificacionesSemanalesController < ApplicationController
+  before_filter :verificar_semanas, :only => :index
+  
   # GET /planificaciones_semanales
   # GET /planificaciones_semanales.json
   def index
@@ -85,5 +87,15 @@ class PlanificacionesSemanalesController < ApplicationController
       format.html { redirect_to planificaciones_semanales_url }
       format.json { head :ok }
     end
+  end
+
+private
+  def verificar_semanas
+    hoy = Date.today
+
+    # Asegurarse que las semanas del mes en curso, el anterior y el próximo existen
+    Semana.crear_semanas_mes hoy.prev_month    
+    Semana.crear_semanas_mes hoy
+    Semana.crear_semanas_mes hoy.next_month
   end
 end

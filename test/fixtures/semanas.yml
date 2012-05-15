@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: semanas
+#
+#  id         :integer         not null, primary key
+#  desde      :date
+#  hasta      :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
