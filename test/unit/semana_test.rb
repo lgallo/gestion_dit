@@ -2,11 +2,11 @@
 #
 # Table name: semanas
 #
-#  id         :integer         not null, primary key
+#  id         :integer         primary key
 #  desde      :date
 #  hasta      :date
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :timestamp
+#  updated_at :timestamp
 #
 
 require 'test_helper'

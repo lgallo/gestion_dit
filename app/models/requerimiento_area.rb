@@ -8,6 +8,7 @@
 #  estimacion       :decimal(, )
 #  created_at       :timestamp
 #  updated_at       :timestamp
+#  etapa            :string(255)
 #
 
 class RequerimientoArea < ActiveRecord::Base

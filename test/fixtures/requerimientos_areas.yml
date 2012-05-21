@@ -8,6 +8,7 @@
 #  estimacion       :decimal(, )
 #  created_at       :timestamp
 #  updated_at       :timestamp
+#  etapa            :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html

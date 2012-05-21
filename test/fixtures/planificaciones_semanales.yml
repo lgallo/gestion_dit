@@ -2,13 +2,13 @@
 #
 # Table name: planificaciones_semanales
 #
-#  id                  :integer         not null, primary key
+#  id                  :integer         primary key
 #  usuario_id          :integer
 #  semana_id           :integer
 #  tareas_planificadas :text
 #  tareas_realizadas   :text
-#  created_at          :datetime
-#  updated_at          :datetime
+#  created_at          :timestamp
+#  updated_at          :timestamp
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
