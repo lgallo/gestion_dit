@@ -17,44 +17,28 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="span12">
-			<div class="well">
-				<div class="row">
-					<div class="span4">
-						<div class="row">
-							<div class="span2">
-								<b>Cantidad de personas:</b>
-							</div>
-							<%= best_in_place @planificacion, :cantidad_personas, :html_attrs => { :class => 'input-mini' } %>
-						</div>
-						<br/>
-						<div class="row">
-							<div class="span2">
-								<b>D&iacute;as en el mes:</b>
-							</div>
-						  <%= best_in_place @planificacion, :dias_mes, :html_attrs => { :class => 'input-mini' } %>
-						</div>
-					</div>
-					<div class="span5">
-						<div class="row">
-							<div class="span4">
-								<b>D&iacute;as disponibles (por recursos y dedicaci&oacute;n):</b>					
-							</div>
-							<%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %>
-						</div>
-						<br />
-						<div class="row">
-							<div class="span4">
-								<b>Coeficiente ajuste:</b>
-							</div>
-							<%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<table class="table table-condensed table-striped table-bordered span4">
+		<tbody>
+			<tr>
+				<td>D&iacute;as en el mes</td>
+				<td><%= best_in_place @planificacion, :dias_mes, :html_attrs => { :class => 'input-mini' } %></td>
+			</tr>
+			<tr>
+				<td>&times; Cantidad de personas</td>
+				<td><%= best_in_place @planificacion, :cantidad_personas, :html_attrs => { :class => 'input-mini' } %></td>
+			</tr>
+			<tr>
+				<td>&times; Coeficiente ajuste</td>
+				<td><%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %></td>
+			</tr>
+			<tr>
+				<td><strong>&rArr; D&iacute;as disponibles (por recursos y dedicaci&oacute;n)</strong></td>
+				<td><strong><%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %></strong></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<legend>Requerimientos planificados para este mes</legend>
 	
 	<%= render 'planificaciones/requerimientos_mes' %>
 
