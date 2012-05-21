@@ -4,8 +4,18 @@
   # GET /planificaciones
   # GET /planificaciones.json
   def index
-    @id_area = params[:id_area]
-    @periodo = params[:periodo] || 'este_mes'
+    unless params[:id_area].nil?
+      session[:filtro_area_id] = params[:id_area]
+    end
+    
+    unless params[:periodo].nil?
+      session[:filtro_periodo_planif] = params[:periodo]
+    else
+      session[:filtro_periodo_planif] ||= 'este_mes'
+    end
+    
+    @id_area = session[:filtro_area_id]
+    @periodo = session[:filtro_periodo_planif]
     
     @planificaciones = Planificacion.filtrar_por_periodo(@periodo, @id_area)    
     @planificaciones.sort_by!{ |p| [p.anio, p.mes]}.reverse! unless @planificaciones.nil?
