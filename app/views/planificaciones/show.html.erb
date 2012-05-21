@@ -17,26 +17,50 @@
 		</div>
 	</div>
 
-	<table class="table table-condensed table-striped table-bordered span4">
-		<tbody>
-			<tr>
-				<td>D&iacute;as en el mes</td>
-				<td><%= best_in_place @planificacion, :dias_mes, :html_attrs => { :class => 'input-mini' } %></td>
-			</tr>
-			<tr>
-				<td>&times; Cantidad de personas</td>
-				<td><%= best_in_place @planificacion, :cantidad_personas, :html_attrs => { :class => 'input-mini' } %></td>
-			</tr>
-			<tr>
-				<td>&times; Coeficiente ajuste</td>
-				<td><%= best_in_place @planificacion, :coeficiente_ajuste, :html_attrs => { :size => '1' } %></td>
-			</tr>
-			<tr>
-				<td><strong>&rArr; D&iacute;as disponibles (por recursos y dedicaci&oacute;n)</strong></td>
-				<td><strong><%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %></strong></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="span6">
+
+			<table class="table table-condensed table-striped table-bordered span4">
+				<tbody>
+					<tr>
+						<td>D&iacute;as en el mes</td>
+						<td><%= best_in_place @planificacion, :dias_mes, html_attrs: {:class => 'input-mini'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
+					</tr>
+					<tr>
+						<td>&times; Cantidad de personas</td>
+						<td><%= best_in_place @planificacion, :cantidad_personas, html_attrs: {class: 'input-mini'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
+					</tr>
+					<tr>
+						<td>&times; Coeficiente ajuste</td>
+						<td><%= best_in_place @planificacion, :coeficiente_ajuste, html_attrs: {size: '1'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
+					</tr>
+					<script>
+						$('.best_in_place').bind("ajax:success", function(event, data)
+						{
+							var result = $.parseJSON(data); 
+							$('#dias_totales_calculados').html(result['dias_totales_calculados']);
+							$('#dias_totales_calculados').effect("highlight", {color: 'red'}, 3000);
+						});
+					</script>
+					<tr>
+						<td>&rArr; D&iacute;as totales</td>
+						<td id="dias_totales_calculados"><%= @planificacion.dias_totales_calculados %></td>
+					</tr>
+					<tr>
+						<td><strong>&rArr; D&iacute;as totales corregidos</strong></td>
+						<td><strong><%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %></strong></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		<div class="span1">
+			<b>Observaciones:</b>
+		</div>
+		<div class="span3">
+			<%= best_in_place @planificacion, :observaciones, nil: 'Sin observaciones - click para agregar', type: :textarea, html_attrs: { rows: 7 } %>
+		</div>
+	</div>
 
 	<legend>Requerimientos planificados para este mes</legend>
 	

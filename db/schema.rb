@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521152221) do
+ActiveRecord::Schema.define(:version => 20120521184406) do
 
   create_table "aplicaciones", :force => true do |t|
     t.string    "nombre"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120521152221) do
     t.integer   "area_id"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.string    "observaciones"
   end
 
   add_index "planificaciones", ["area_id"], :name => "index_planificaciones_on_area_id"

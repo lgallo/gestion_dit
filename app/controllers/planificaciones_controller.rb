@@ -74,12 +74,12 @@
   # PUT /planificaciones/1
   # PUT /planificaciones/1.json
   def update
-    @planificacion = Planificacion.find(params[:id])
+    @planificacion = Planificacion.find(params[:id])    
 
     respond_to do |format|
       if @planificacion.update_attributes(params[:planificacion])
         format.html { redirect_to @planificacion, notice: 'Planificacion was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => { "dias_totales_calculados" => @planificacion.dias_totales_calculados } }
       else
         format.html { render action: "edit" }
         format.json { render json: @planificacion.errors, status: :unprocessable_entity }

@@ -12,6 +12,7 @@
 #  area_id            :integer
 #  created_at         :timestamp
 #  updated_at         :timestamp
+#  observaciones      :string(255)
 #
 
 require 'test_helper'

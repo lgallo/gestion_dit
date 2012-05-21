@@ -12,6 +12,7 @@
 #  area_id            :integer
 #  created_at         :timestamp
 #  updated_at         :timestamp
+#  observaciones      :string(255)
 #
 
 class Planificacion < ActiveRecord::Base
@@ -39,6 +40,10 @@ class Planificacion < ActiveRecord::Base
     end
     
     Planificacion.where("#{sql_periodo} #{sql_area}")
+  end
+
+  def dias_totales_calculados
+    dias_mes * cantidad_personas * coeficiente_ajuste
   end
 
   def dias_asignados
