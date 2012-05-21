@@ -30,9 +30,8 @@ class Requerimiento < ActiveRecord::Base
   
   has_many :requerimientos_areas, :class_name => 'RequerimientoArea'
 
-  def dias_estimados(area)
-    req_area = RequerimientoArea.where(:area_id => area.id, :requerimiento_id => id).first
-    req_area.nil? ? 0: req_area.estimacion    
+  def dias_estimados(area)    
+    RequerimientoArea.where(:area_id => area.id, :requerimiento_id => id).to_a.sum { |req| req.estimacion }
   end
   
   def dias_estimados_totales
