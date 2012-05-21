@@ -5,7 +5,15 @@ class RequerimientosController < ApplicationController
   # GET /requerimientos
   # GET /requerimientos.json
   def index
-    @estado_id = params[:estado_id] || Estado.where("nombre <> 'Finalizado'").first.id
+    # Si se filtró, lo que pidieron, si no lo que está
+    # en la sesión, y si no el primer estado no finalizado
+    unless params[:estado_id].nil?
+      session[:filtro_estado_id] = params[:estado_id]
+    else
+      session[:filtro_estado_id] ||= Estado.where("nombre <> 'Finalizado'").first.id
+    end
+    
+    @estado_id = session[:filtro_estado_id]
     
     if @estado_id.nil? or @estado_id == ""
       @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction)
