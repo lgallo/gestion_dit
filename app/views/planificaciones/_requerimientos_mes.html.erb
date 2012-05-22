@@ -28,9 +28,9 @@
 							<td><%= p.requerimiento.tipo_requerimiento.nombre %></td>
 							<td><%= p.requerimiento.aplicacion.nombre %></td>
 							<td><%= p.requerimiento.area.nombre %></td>
-							<td><%= link_to p.requerimiento.dias_estimados(@planificacion.area), requerimiento_path(p.requerimiento) %></td>
+							<td><%= (link_to p.requerimiento.dias_estimados(@planificacion.area), requerimiento_path(p.requerimiento)) unless @planificacion.area.nil? %></td>
 							<td><%= p.dedicacion_previa %></td>
-							<td><%= p.dedicacion_restante(@planificacion.area) %></td>
+							<td><%= p.dedicacion_restante(@planificacion.area) unless @planificacion.area.nil? %></td>
 							<td><%= best_in_place p, :dedicacion_mes, :html_attrs => { :size => '1' } %></td>
 							<td nowrap><%= p.requerimiento.fecha_fin_estimada %></td>
 						    <td><%= link_to 'Borrar', p, confirm: '¿Está seguro?', method: :delete %></td>

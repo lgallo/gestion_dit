@@ -58,7 +58,7 @@
 			    <td><%= planificacion.dias_totales %></td>
 			    <td><%= asignados %></td>
 			    <td><%= restantes %></td>
-			    <td><%= planificacion.area.nombre %></td>
+			    <td><%= planificacion.area.nombre unless planificacion.area.nil? %></td>
 			    <td><%= link_to 'Detalle', planificacion %></td>
 			    <td><%= link_to 'Borrar', planificacion, confirm: '¿Está seguro?', method: :delete %></td>
 		  	</tr>

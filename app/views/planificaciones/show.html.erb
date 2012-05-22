@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="span12">
 			<legend>
-				<%= @planificacion.area.nombre %>
+				<%= @planificacion.area.nombre unless @planificacion.area.nil? %>
 				&nbsp;/&nbsp;
 				<%= best_in_place @planificacion, :mes, :type => :select, :collection => MESES.map { |k, v| [v, k] } %>
 				&nbsp;de&nbsp;
