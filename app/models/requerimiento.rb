@@ -36,7 +36,7 @@ class Requerimiento < ActiveRecord::Base
   end
   
   def dias_planificados_totales
-    planificaciones_requerimientos.inject(0) { |sum, item| sum + item.dedicacion_mes }
+    planificaciones_requerimientos.inject(0) { |sum, item| sum + (item.dedicacion_mes.nil?? 0: item.dedicacion_mes) } 
   end
   
   def dias_estimados_totales
