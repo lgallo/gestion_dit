@@ -58,6 +58,29 @@ class Planificacion < ActiveRecord::Base
     disponibles = self.dias_totales
   end
 
+  def coeficiente_previo
+    previa = self.previa
+    
+    unless previa.nil?
+      previa.coeficiente_ajuste
+    else
+      nil
+    end
+  end
+
+  def previa
+    mes_previa = (mes == 1)? 12: (mes - 1)
+    anio_previa = (mes == 1)? (anio - 1): anio
+     
+    previa = Planificacion.where(area_id: self.area.id, mes: mes_previa, anio: anio_previa)
+    
+    unless previa.nil?
+      previa.first
+    else
+      nil
+    end
+  end
+
   def previa? (otra_planif)
     self.anio < otra_planif.anio or (self.anio == otra_planif.anio and self.mes < otra_planif.mes)
   end

@@ -59,6 +59,11 @@
   # POST /planificaciones.json
   def create
     @planificacion = Planificacion.new(params[:planificacion])
+    
+    @planificacion.cantidad_personas = 0
+    @planificacion.dias_mes = 0
+    @planificacion.coeficiente_ajuste = 0
+    @planificacion.dias_totales = 0
 
     respond_to do |format|
       if @planificacion.save

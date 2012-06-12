@@ -31,7 +31,7 @@
 						<td><%= best_in_place @planificacion, :cantidad_personas, html_attrs: {class: 'input-mini'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
 					</tr>
 					<tr>
-						<td>&times; Coeficiente ajuste</td>
+						<td>&times; Coeficiente ajuste <%= "(coeficiente previo #{@planificacion.coeficiente_previo})" unless @planificacion.coeficiente_previo.nil? %></td>
 						<td><%= best_in_place @planificacion, :coeficiente_ajuste, html_attrs: {size: '1'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
 					</tr>
 					<script>
