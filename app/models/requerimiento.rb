@@ -29,9 +29,14 @@ class Requerimiento < ActiveRecord::Base
   belongs_to :estado
   
   has_many :requerimientos_areas, :class_name => 'RequerimientoArea'
+  has_many :planificaciones_requerimientos, :class_name => "PlanificacionRequerimiento"
 
   def dias_estimados(area)    
     RequerimientoArea.where(:area_id => area.id, :requerimiento_id => id).to_a.sum { |req| req.estimacion }
+  end
+  
+  def dias_planificados_totales
+    planificaciones_requerimientos.inject(0) { |sum, item| sum + item.dedicacion_mes }
   end
   
   def dias_estimados_totales

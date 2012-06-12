@@ -34,7 +34,8 @@
 				    <%= sortable "fecha_fin_estimada", "Fecha fin estimada" %>
 				    <%= sortable "fecha_implementacion", "Implementado"%>
 				    <th>Responsable DIT</th>
-				    <th>Días est. TOTALES</th>
+				    <th>D&iacute;as est. TOTALES</th>
+				    <th>D&iacute;as planificados</th>
 				    <th>Estado</th>
 				    <%= sortable 'prioridad' %>
 				    <th colspan="2">&nbsp;</th>
@@ -68,6 +69,7 @@
 				    	<% end %>
 					</td>
 				    <td><%= r.dias_estimados_totales %></td>
+				    <td><%= r.dias_planificados_totales %></td>
 				    <td><%= r.estado.nombre unless r.estado.nil? %></td>
 				    <td><%= r.prioridad %></td>
 				    <td><%= link_to 'Ver', "#{requerimientos_path}/#{r.numero}" %></td>
