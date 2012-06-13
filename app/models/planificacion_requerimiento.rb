@@ -28,6 +28,10 @@ class PlanificacionRequerimiento < ActiveRecord::Base
     dias_previos
   end
   
+  def dedicacion_sin_planificar(area)
+    dedicacion_restante(area) - dedicacion_mes
+  end
+  
   def dedicacion_restante(area)
     self.requerimiento.dias_estimados(area) - self.dedicacion_previa
   end

@@ -1,0 +1,20 @@
+
+	<% planificacion = planificacion_requerimiento.planificacion %>
+	
+	<tr title="<%= planificacion_requerimiento.requerimiento.observaciones %>">
+		<td><%= planificacion_requerimiento.requerimiento.numero %></td>
+		<td><%= planificacion_requerimiento.requerimiento.descripcion %></td>
+		<td><%= planificacion_requerimiento.requerimiento.tipo_requerimiento.nombre %></td>
+		<td><%= planificacion_requerimiento.requerimiento.aplicacion.nombre %></td>
+		<td><%= planificacion_requerimiento.requerimiento.area.nombre %></td>
+		<td><%= (link_to planificacion_requerimiento.requerimiento.dias_estimados(planificacion.area), 
+						requerimiento_path(planificacion_requerimiento.requerimiento)) unless planificacion.area.nil? %></td>
+		<td><%= planificacion_requerimiento.dedicacion_previa %></td>
+		<td><%= planificacion_requerimiento.dedicacion_restante(planificacion.area) unless planificacion.area.nil? %></td>
+		<td><%= best_in_place planificacion_requerimiento, :dedicacion_mes, html_attrs: {class: 'input-mini'} %></td>
+		<td id="dedicacion_sin_planificar_<%= planificacion_requerimiento.id %>">
+			<%= planificacion_requerimiento.dedicacion_sin_planificar(planificacion.area) unless planificacion.area.nil? %>
+		</td>
+		<td nowrap><%= planificacion_requerimiento.requerimiento.fecha_fin_estimada %></td>
+	    <td><%= link_to 'Borrar', planificacion_requerimiento, confirm: '¿Está seguro?', method: :delete %></td>
+	</tr>

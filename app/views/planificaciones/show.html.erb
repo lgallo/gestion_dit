@@ -24,7 +24,7 @@
 				<tbody>
 					<tr>
 						<td>D&iacute;as en el mes</td>
-						<td><%= best_in_place @planificacion, :dias_mes, html_attrs: {:class => 'input-mini'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
+						<td><%= best_in_place @planificacion, :dias_mes, html_attrs: {class: 'input-mini'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
 					</tr>
 					<tr>
 						<td>&times; Cantidad de personas</td>
@@ -32,23 +32,15 @@
 					</tr>
 					<tr>
 						<td>&times; Coeficiente ajuste <%= "(coeficiente previo #{@planificacion.coeficiente_previo})" unless @planificacion.coeficiente_previo.nil? %></td>
-						<td><%= best_in_place @planificacion, :coeficiente_ajuste, html_attrs: {size: '1'}, data: {dias_totales_calculados: @planificacion.dias_totales_calculados} %></td>
+						<td><%= best_in_place @planificacion, :coeficiente_ajuste, html_attrs: {class: 'input-mini'} %></td>
 					</tr>
-					<script>
-						$('.best_in_place').bind("ajax:success", function(event, data)
-						{
-							var result = $.parseJSON(data); 
-							$('#dias_totales_calculados').html(result['dias_totales_calculados']);
-							$('#dias_totales_calculados').effect("highlight", {color: 'red'}, 3000);
-						});
-					</script>
 					<tr>
 						<td>&rArr; D&iacute;as totales</td>
 						<td id="dias_totales_calculados"><%= @planificacion.dias_totales_calculados %></td>
 					</tr>
 					<tr>
 						<td><strong>&rArr; D&iacute;as totales corregidos</strong></td>
-						<td><strong><%= best_in_place @planificacion, :dias_totales, :html_attrs => { :size => '1' } %></strong></td>
+						<td><strong><%= best_in_place @planificacion, :dias_totales, html_attrs: {class: 'input-mini'} %></strong></td>
 					</tr>
 				</tbody>
 			</table>
@@ -74,4 +66,25 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
+		$('.best_in_place').bind("ajax:success", function(event, data)
+		{
+			var result = $.parseJSON(data);
+
+			if (result['dias_totales_calculados'])
+			{
+				var elemento = $('#dias_totales_calculados');
+				var valor = result['dias_totales_calculados'];  
+			}
+			else if (result['dedicacion_sin_planificar'])
+			{
+				var elemento = $('#dedicacion_sin_planificar_'+ result['id']);
+				var valor = result['dedicacion_sin_planificar'];
+			}
+			
+			elemento.html(valor);
+			elemento.effect("highlight", {color: 'red'}, 3000);
+		});
+	</script>
 	

@@ -60,11 +60,13 @@ class PlanificacionesRequerimientosController < ApplicationController
   # PUT /planificaciones_requerimientos/1.json
   def update
     @planificacion_requerimiento = PlanificacionRequerimiento.find(params[:id])
+    
+    area = @planificacion_requerimiento.planificacion.area
 
     respond_to do |format|
       if @planificacion_requerimiento.update_attributes(params[:planificacion_requerimiento])
         format.html { redirect_to @planificacion_requerimiento, notice: 'Planificacion requerimiento was successfully updated.' }
-        format.json { head :ok }
+        format.json { render json:  { id: @planificacion_requerimiento.id, dedicacion_sin_planificar: @planificacion_requerimiento.dedicacion_sin_planificar(area)} }
       else
         format.html { render action: "edit" }
         format.json { render json: @planificacion_requerimiento.errors, status: :unprocessable_entity }
