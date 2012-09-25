@@ -1,4 +1,4 @@
-
+﻿
 	<legend><%= @requerimiento.tipo_requerimiento.nombre.capitalize %> <%=  "\##{@requerimiento.numero}" if @requerimiento.persisted? %></legend>
 	
 	<div class="row">
@@ -46,11 +46,12 @@
 	</div>
 	
 	<br/>
-	<legend>Estimaciones de &aacute;reas involucradas en el requerimiento</legend>
 
 	<div class="row">
 		<div class="span6">
-			<%= form_tag("/requerimientos_areas", :method => 'post', :class => 'form-horizontal', :remote => true) do %>
+			<legend>Estimaciones de &aacute;reas involucradas en el requerimiento</legend>
+			
+			<%= form_tag("/requerimientos_areas", :method => "post", :class => "form-horizontal", :remote => true) do %>
 				<input type="hidden" name="requerimiento_area[requerimiento_id]" value="<%= @requerimiento.id %>"/>
 				<select name="requerimiento_area[area_id]">
 					<% @areas.each do |a| %>
@@ -59,12 +60,37 @@
 				</select>
 				<input type="submit" value="Agregar" class="btn btn-primary" />
 			<% end %>
-		</div>
-	</div>
 
-	<div class="row">
+			<%= render  :template => "requerimientos_areas/index", :locals => {:requerimientos_areas => @requerimiento.requerimientos_areas} %>			
+			
+		</div>
 		<div class="span6">
-			<%= render  :template => 'requerimientos_areas/index', :locals => {:requerimientos_areas => @requerimiento.requerimientos_areas} %>			
+			<legend>Planificaciones efectuadas de este requerimiento</legend>
+
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>&Aacute;rea</th>
+						<th>Per&iacute;odo</th>
+						<th>D&iacute;as asignados</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @requerimiento.planificaciones_ordenadas.each do |pr| %>
+						<tr>
+							<td><%= pr.planificacion.nil? ? "¿#{pr.planificacion_id}?": pr.planificacion.area.nombre %></td>
+							<td>
+								<% unless pr.planificacion.nil? %>								
+									<%= link_to "#{MESES[pr.planificacion.mes - 1][0]} #{pr.planificacion.anio}", pr.planificacion %>
+								<% else %>
+									...
+								<% end %>
+							</td>
+							<td><%= pr.dedicacion_mes %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
 		</div>
 	</div>
 

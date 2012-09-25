@@ -31,6 +31,21 @@ class Requerimiento < ActiveRecord::Base
   has_many :requerimientos_areas, :class_name => 'RequerimientoArea'
   has_many :planificaciones_requerimientos, :class_name => "PlanificacionRequerimiento"
 
+  def planificaciones_ordenadas
+	ordenadas = self.planificaciones_requerimientos
+	ordenadas.sort do |a, b|
+		unless a.planificacion.nil? or b.planificacion.nil?
+			if a.planificacion.anio == b.planificacion.anio
+				a.planificacion.mes <=> b.planificacion.mes
+			else
+				a.planificacion.anio <=> b.planificacion.anio
+			end
+		else
+			0
+		end
+	end
+  end
+  
   def dias_estimados(area)    
     RequerimientoArea.where(:area_id => area.id, :requerimiento_id => id).to_a.sum { |req| req.estimacion }
   end
