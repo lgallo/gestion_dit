@@ -1,19 +1,26 @@
-
+﻿
 	<div class="row">
 		<div class="span12">
 			<form style="display: inline;">
 				<legend>
 					<div class="row">
-						<div class="span10">
+						<div class="span6">
 							Listado de requerimientos en estado
 							<select name="estado_id" onchange="javascript: this.parentNode.parentNode.parentNode.parentNode.submit();">
 								<% @estados.each do |e| %>
-									<option value="<%= e.id %>" <%= 'selected' if !@estado_id.nil? and e.id.to_i == @estado_id.to_i %>><%= e.nombre %></option>
+									<option value="<%= e.id %>" <%= "selected" if !@estado_id.nil? and e.id.to_i == @estado_id.to_i %>><%= e.nombre %></option>
 								<% end %>
 							</select>
 						</div>
+						<div class="span4">
+							<form class="form-search">
+								<div class="input-append">
+									<input type="text" name="texto_buscado" value="<%= params["texto_buscado"] %>" placeholder="Buscar en la descripci&oacute;n" class="span2 search-query"><button type="submit" class="btn">Buscar</button>
+								</div>
+							</form>							
+						</div>
 						<div class="span2">
-							<%= link_to 'Agregar requerimiento', new_requerimiento_path, :class => 'btn btn-primary' %>
+							<%= link_to "Agregar requerimiento", new_requerimiento_path, :class => "btn btn-primary" %>
 						</div>
 					</div>
 				</legend>
@@ -37,14 +44,20 @@
 				    <th>D&iacute;as est. TOTALES</th>
 				    <th>D&iacute;as planificados</th>
 				    <th>Estado</th>
-				    <%= sortable 'prioridad' %>
+				    <%= sortable "prioridad" %>
 				    <th colspan="2">&nbsp;</th>
 		  		</thead>
 				<tbody>
 				<% @requerimientos.each do |r| %>
 				  <tr title="<%= r.observaciones %>">
 				    <td><%= r.numero %></td>
-				    <td><%= r.descripcion %></td>
+				    <td>
+							<% if params["texto_buscado"].nil? or params["texto_buscado"].empty? %>
+								<%= r.descripcion %>
+							<% else %>
+								<%= r.descripcion.gsub(/#{params["texto_buscado"]}/i,'<span class="highlight">\0</span>').html_safe %>
+							<% end %>
+						</td>
 				    <td><%= r.tipo_requerimiento.nombre[0, 3] %>.</td>
 				    <td><%= r.aplicacion.nombre[0, 6] %> (...)</td>
 				    <td>

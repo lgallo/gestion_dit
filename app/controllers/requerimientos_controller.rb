@@ -1,4 +1,4 @@
-class RequerimientosController < ApplicationController
+﻿class RequerimientosController < ApplicationController
   before_filter :cargar_combos, :only => [:new, :edit]
   helper_method :sort_column, :sort_direction
   
@@ -15,10 +15,13 @@ class RequerimientosController < ApplicationController
     
     @estado_id = session[:filtro_estado_id]
     
-    if @estado_id.nil? or @estado_id == ""
-      @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction)
-    else
-      @requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction).where(:estado_id => @estado_id)
+		if @estado_id.nil? or @estado_id == ""
+			@requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction)
+		elsif params['texto_buscado'].nil?
+			@requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction).where(:estado_id => @estado_id)
+		else
+			where = "estado_id = :estado_id and (descripcion like '%#{params['texto_buscado']}%')"
+			@requerimientos = Requerimiento.joined.order(sort_column + ' ' + sort_direction).where(where, estado_id: @estado_id, texto_buscado: params['texto_buscado'])
     end
     
     @estados = [Estado.new] 
