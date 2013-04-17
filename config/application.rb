@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-  ANIOS = [2011, 2012]
+  ANIOS = [2011, 2012, 2013, 2014]
   MESES = [ ['Enero', 1], ['Febrero', 2], ['Marzo', 3],
             ['Abril', 4], ['Mayo', 5], ['Junio', 6],
             ['Julio', 7], ['Agosto', 8], ['Septiembre', 9],
